@@ -6,15 +6,14 @@ Features:
 * Sync strains from flowzz.com into local storage
 * Use auto completion to select strains and to see the vendors offering them as well as their prices
 * Get an overview which vendor is selling all selected strains and sort them by price
-* Save, Edit and Delete Presets of strains for quick price comparison
+* Save, edit and delete presets of strains for quick price comparison
 
 ![extension1](demo/extension1.png)
 ![extension2](demo/extension2.png)
 
 Hint: This extension has been fully generated with the help of ChatGTP.
 
-How to use?
-
+Installation:
 1. Download latest version from [Releases](https://github.com/FrittenToni/flowzz-shopping-helper/releases).
 2. Unzip extension
 3. Open Chrome: chrome://extensions
@@ -27,6 +26,6 @@ Extension Usage:
 * Pin the app "Flowzz Shopping Helper" for ez access
 * Open https://flowzz.com. Make sure you are logged on. The extension uses your session to retrieve the data.
 * Open the extension by clicking the weed icon
-* Enjoy the price comparison ;-)
+* Enjoy cheap herb prices ;-)
 
 Hint: Vendors with price tags for certain products but not being able to ship a strain will be filtered out.
