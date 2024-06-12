@@ -8,8 +8,7 @@ Features:
 * Get an overview which vendor is selling all selected strains and sort them by price
 * Save, Edit and Delete Presets of strains for quick price comparison
 
-Extension Screenshots:
-![extension1](demo\extension1.png)
-![extension2](demo\extension2.png)
+![extension1](demo/extension1.png)
+![extension2](demo/extension2.png)
 
 Hint: This extension has been fully generated with the help of ChatGTP.
