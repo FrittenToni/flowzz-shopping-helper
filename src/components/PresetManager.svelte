@@ -79,7 +79,6 @@
 </script>
 
 <div>
-	<label for="presetSelect">Load Preset:</label>
 	<select id="presetSelect" bind:value={selectedPreset} on:change={handleLoadPreset}>
 		<option value="">Select a preset</option>
 		{#each presets as preset}
@@ -87,8 +86,9 @@
 		{/each}
 	</select>
 </div>
-
+<p>
 <button on:click={handleSavePreset}>Save Preset</button>
 {#if selectedPreset}
 	<button on:click={handleDeletePreset}>Delete Preset</button>
 {/if}
+</p>
