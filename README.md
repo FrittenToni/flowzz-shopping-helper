@@ -28,4 +28,4 @@ Extension Usage:
 * Open the extension by clicking the weed icon
 * Enjoy cheap herb prices ;-)
 
-Hint: Vendors with price tags for certain products but not being able to ship a strain will be filtered out.
+Hint: Vendors with price tags for certain products but not being able to ship will be filtered out.
