@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fetchCsrfToken } from '$lib/syncStrains.ts';
-	import PriceComparison from './PriceComparison.svelte';
+	import SearchStrainField from '$components/SearchStrainField.svelte';
+	import PresetManager from '$components/PresetManager.svelte';
+	import PriceComparison from '$components/PriceComparison.svelte';
 
 	export let cannabisStrains: { id: number; name: string }[] = [];
 	export let strainCount = 0;
@@ -23,13 +25,11 @@
 	let presets = JSON.parse(localStorage.getItem('presets') || '[]');
 	let selectedPreset = '';
 
-	// Function to save the state to localStorage
 	function saveState() {
 		localStorage.setItem('searchFields', JSON.stringify(searchFields));
 		localStorage.setItem('nextId', JSON.stringify(nextId));
 	}
 
-	// Function to load the state from localStorage
 	function loadState() {
 		const savedSearchFields = localStorage.getItem('searchFields');
 		const savedNextId = localStorage.getItem('nextId');
@@ -43,54 +43,14 @@
 		}
 	}
 
-	function savePreset(presetName) {
-		if (!presetName) {
-			alert("Preset name cannot be empty.");
-			return;
-		}
-
-		const existingPresetIndex = presets.findIndex(p => p.name === presetName);
-		const newPreset = {
-			name: presetName,
-			fields: searchFields
-		};
-
-		if (existingPresetIndex >= 0) {
-			presets[existingPresetIndex] = newPreset;
-		} else {
-			presets = [...presets, newPreset];
-		}
-
-		localStorage.setItem('presets', JSON.stringify(presets));
+	function updateSearchFields(fields) {
+		searchFields = fields;
+		saveState();
 	}
 
-	function loadPreset(presetName) {
-		const preset = presets.find(p => p.name === presetName);
-		if (preset) {
-			searchFields = preset.fields.map(field => ({
-				...field,
-				loadingVendors: true, // Set loading to true to fetch the latest vendor data
-				vendors: [], // Clear cached vendors
-				noVendors: false // Reset no vendors flag
-			}));
-			nextId = Math.max(...searchFields.map(f => f.id)) + 1;
-			selectedPreset = presetName;
-			saveState();
-
-			searchFields.forEach((field, index) => {
-				if (field.selectedStrain) {
-					fetchVendors(index); // Directly call fetchVendors instead of handleInputChange
-				}
-			});
-		}
-	}
-
-	function deletePreset() {
-		if (selectedPreset) {
-			presets = presets.filter(p => p.name !== selectedPreset);
-			localStorage.setItem('presets', JSON.stringify(presets));
-			selectedPreset = '';
-		}
+	function setNextId(id) {
+		nextId = id;
+		saveState();
 	}
 
 	onMount(() => {
@@ -105,7 +65,8 @@
 		saveState();
 	}
 
-	function removeSearchField(index: number) {
+	function removeSearchField(event) {
+		const index = event.detail.index;
 		if (searchFields.length > 1) {
 			searchFields = [
 				...searchFields.slice(0, index),
@@ -123,7 +84,9 @@
 		saveState();
 	}
 
-	async function handleInputChange(index: number, value: string): Promise<void> {
+	async function handleInputChange(event) {
+		const index = event.detail.index;
+		const value = event.detail.value;
 		const field = { ...searchFields[index] };
 		field.inputValue = value;
 		const selected = cannabisStrains.find((strain) => strain.name.toLowerCase() === value.toLowerCase());
@@ -197,65 +160,38 @@
 </script>
 
 <main>
-	<div>
-		<label for="presetSelect">Load Preset:</label>
-		<select id="presetSelect" bind:value={selectedPreset} on:change={(e) => loadPreset(e.target.value)}>
-			<option value="">Select a preset</option>
-			{#each presets as preset}
-				<option value={preset.name}>{preset.name}</option>
-			{/each}
-		</select>
-	</div>
+	<PresetManager
+		{presets}
+		{selectedPreset}
+		{searchFields}
+		{nextId}
+		{updateSearchFields}
+		{setNextId}
+		on:presetLoaded={event => {
+			searchFields = event.detail.fields;
+			nextId = event.detail.nextId;
+			saveState();
+		}}
+		on:presetDeleted={clearSearchFields}
+		on:fetchVendors={event => {
+			const { index } = event.detail;
+			fetchVendors(index);
+		}}
+	/>
 
 	{#each searchFields as field, index (field.id)}
-		<div>
-			<input
-				list="strains"
-				id={"strainInput" + field.id}
-				placeholder="Enter strain name"
-				bind:value={field.inputValue}
-				on:input={(e) => handleInputChange(index, e.target.value)}
-			/>
-			<datalist id="strains">
-				{#each cannabisStrains as strain}
-					<option value={strain.name}>{strain.name}</option>
-				{/each}
-			</datalist>
-			<button on:click={() => removeSearchField(index)}>-</button>
-			{#if field.loadingVendors}
-				<p>Loading...</p>
-			{:else if field.selectedStrain}
-				{#if field.noVendors}
-					<p>No Vendors found.</p>
-				{:else if field.vendors.length > 0}
-					<table>
-						<thead>
-							<tr>
-								<th>Vendor</th>
-								<th>Price</th>
-							</tr>
-						</thead>
-						<tbody>
-							{#each field.vendors as vendor}
-								<tr>
-									<td>{vendor.name}</td>
-									<td>{vendor.price}</td>
-								</tr>
-							{/each}
-						</tbody>
-					</table>
-				{/if}
-			{/if}
-		</div>
+		<SearchStrainField
+			{field}
+			{index}
+			{cannabisStrains}
+			on:inputChange={handleInputChange}
+			on:removeField={removeSearchField}
+		/>
 	{/each}
 
 	<div>
 		<button on:click={addSearchField}>+</button>
 		<button on:click={clearSearchFields}>Reset</button>
-		<button on:click={() => savePreset(prompt('Enter preset name:'))}>Save Preset</button>
-		{#if selectedPreset}
-			<button on:click={deletePreset}>Delete Preset</button>
-		{/if}
 	</div>
 
 	{#if selectedStrains.length > 1}
@@ -268,25 +204,6 @@
 		text-align: center;
 		padding: 1rem;
 		width: 600px;
-	}
-	input {
-		margin-top: 1rem;
-		padding: 0.5rem;
-		font-size: 1rem;
-		width: 400px;
-	}
-	table {
-		margin-top: 1rem;
-		width: 100%;
-		border-collapse: collapse;
-	}
-	th, td {
-		border: 1px solid #ddd;
-		padding: 8px;
-	}
-	th {
-		background-color: #f2f2f2;
-		text-align: left;
 	}
 	button {
 		margin-top: 1rem;

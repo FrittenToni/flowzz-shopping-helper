@@ -10,6 +10,10 @@
 	function handleInputChange(event) {
 		dispatch('inputChange', { index, value: event.target.value });
 	}
+
+	function handleRemoveField() {
+		dispatch('removeField', { index });
+	}
 </script>
 
 <div>
@@ -25,6 +29,7 @@
 			<option value={strain.name}>{strain.name}</option>
 		{/each}
 	</datalist>
+	<button on:click={handleRemoveField}>-</button>
 	{#if field.loadingVendors}
 		<p>Loading...</p>
 	{:else if field.selectedStrain}
@@ -70,5 +75,11 @@
 	th {
 		background-color: #f2f2f2;
 		text-align: left;
+	}
+	button {
+		margin-top: 1rem;
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+		cursor: pointer;
 	}
 </style>
