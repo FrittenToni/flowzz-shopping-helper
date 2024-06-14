@@ -83,7 +83,7 @@
 	{:else}
 		<div>
 			<div>
-			{message}
+				{message}
 			</div>
 			{#if strainCount > 0}
 				<img
@@ -92,9 +92,14 @@
 					class="refresh-icon"
 					on:click={refreshStrains}
 				/>
-				<button on:click={toggleAdvancedSearch}>
-					{showAdvancedSearch ? 'Close Advanced Search' : 'Open Advanced Search'}
-				</button>
+				<br/>
+				<div>
+					<button on:click={toggleAdvancedSearch}>
+						{showAdvancedSearch
+							? "Close Advanced Search"
+							: "Open Advanced Search"}
+					</button>
+				</div>
 			{/if}
 		</div>
 		{#if showAdvancedSearch}

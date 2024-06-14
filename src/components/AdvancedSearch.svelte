@@ -84,37 +84,39 @@
   
   <main>
     <h2>Advanced Search</h2>
-    <div>
-      <label>Price Range:</label>
-      <input type="number" bind:value={priceMin} min="0" placeholder="Min Price" on:input={saveState}/>
-      <input type="number" bind:value={priceMax} min="0" placeholder="Max Price" on:input={saveState}/>
-    </div>
-    <div>
-      <label>THC Range:</label>
-      <input type="number" bind:value={thcMin} min="0" max="100" placeholder="Min THC" on:input={saveState}/>
-      <input type="number" bind:value={thcMax} min="0" max="100" placeholder="Max THC" on:input={saveState}/>
-    </div>
-    <div>
-      <label>Rating:</label>
-      <input type="number" bind:value={ratingMin} min="0" max="5" step="0.1" placeholder="Min Rating" on:input={saveState}/>
-    </div>
-    <div>
-      <label>Score Count:</label>
-      <input type="number" bind:value={scoreCountMin} min="0" placeholder="Min Score Count" on:input={saveState}/>
-    </div>
-    <div>
-      <label>Sort By:</label>
-      <select bind:value={sortOption} on:change={saveState}>
-        <option value="">None</option>
-        <option value="alphabetAsc">Alphabet (ASC)</option>
-        <option value="alphabetDesc">Alphabet (DESC)</option>
-        <option value="price">Price</option>
-        <option value="rating">Rating</option>
-        <option value="thc">THC</option>
-      </select>
+    <div class="filter-group">
+      <div class="filter-item">
+        <label>Price Range:</label>
+        <input type="number" bind:value={priceMin} min="0" placeholder="Min Price" on:input={saveState}/>
+        <input type="number" bind:value={priceMax} min="0" placeholder="Max Price" on:input={saveState}/>
+      </div>
+      <div class="filter-item">
+        <label>THC Range:</label>
+        <input type="number" bind:value={thcMin} min="0" max="100" placeholder="Min THC" on:input={saveState}/>
+        <input type="number" bind:value={thcMax} min="0" max="100" placeholder="Max THC" on:input={saveState}/>
+      </div>
+      <div class="filter-item">
+        <label>Score:</label>
+        <input type="number" bind:value={ratingMin} min="0" max="5" step="0.1" placeholder="Min Score" on:input={saveState}/>
+      </div>
+      <div class="filter-item">
+        <label>Score Count:</label>
+        <input type="number" bind:value={scoreCountMin} min="0" placeholder="Min Score Count" on:input={saveState}/>
+      </div>
+      <div class="filter-item">
+        <label>Sort By:</label>
+        <select bind:value={sortOption} on:change={saveState}>
+          <option value="">None</option>
+          <option value="alphabetAsc">Alphabet (ASC)</option>
+          <option value="alphabetDesc">Alphabet (DESC)</option>
+          <option value="price">Price</option>
+          <option value="rating">Rating</option>
+          <option value="thc">THC</option>
+        </select>
+      </div>
     </div>
   
-    <h3>Filtered Strains</h3>
+    <h3>Filtered Strains ({filteredStrains.length})</h3>
     <ul>
       {#each filteredStrains as strain}
         <li on:click={() => openInCurrentTab(`https://flowzz.com/product/${strain.url}`)} class="clickable">
@@ -129,17 +131,30 @@
       text-align: center;
       padding: 1rem;
     }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .filter-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     label {
-      margin-right: 1rem;
+      margin-bottom: 0.5rem;
     }
     input, select {
-      margin-bottom: 1rem;
       padding: 0.5rem;
       font-size: 1rem;
+      width: 150px;
     }
     ul {
       list-style-type: none;
       padding: 0;
+      margin-top: 1rem;
     }
     li {
       margin-bottom: 0.5rem;
