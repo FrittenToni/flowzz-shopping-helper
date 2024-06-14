@@ -5,21 +5,29 @@
 	let loading = false;
 	let message = "";
 	let strainCount = 0;
-	let cannabisStrains: { id: number; name: string }[] = [];
+	let cannabisStrains = [];
 
 	const dispatch = createEventDispatcher();
 
-	function updateMessage(newMessage: string): void {
+	function updateMessage(newMessage) {
 		message = newMessage;
 	}
 
-	async function loadStrains(): Promise<void> {
+	async function loadStrains() {
 		const storedStrains = localStorage.getItem("cannabisStrains");
 		if (storedStrains) {
 			const strains = JSON.parse(storedStrains);
-			cannabisStrains = strains.map((strain: any) => ({
+			cannabisStrains = strains.map((strain) => ({
 				id: strain.id,
 				name: strain.name,
+				thc: strain.thc,
+				cbd: strain.cbd,
+				genetic: strain.genetic,
+				ratings_score: strain.ratings_score,
+				ratings_count: strain.ratings_count,
+				min_price: strain.min_price,
+				max_price: strain.max_price,
+				url: strain.url,
 			}));
 			strainCount = strains.length;
 			updateMessage(`${strainCount} Cannabis Strains available`);
@@ -29,15 +37,23 @@
 		}
 	}
 
-	async function fetchAndStoreStrains(): Promise<void> {
+	async function fetchAndStoreStrains() {
 		loading = true;
 		await fetchStrains(updateMessage);
 		const storedStrains = localStorage.getItem("cannabisStrains");
 		if (storedStrains) {
 			const strains = JSON.parse(storedStrains);
-			cannabisStrains = strains.map((strain: any) => ({
+			cannabisStrains = strains.map((strain) => ({
 				id: strain.id,
 				name: strain.name,
+				thc: strain.thc,
+				cbd: strain.cbd,
+				genetic: strain.genetic,
+				ratings_score: strain.ratings_score,
+				ratings_count: strain.ratings_count,
+				min_price: strain.min_price,
+				max_price: strain.max_price,
+				url: strain.url,
 			}));
 			strainCount = strains.length;
 			dispatch("strainsUpdated", { cannabisStrains, strainCount });
@@ -45,7 +61,7 @@
 		loading = false;
 	}
 
-	async function refreshStrains(): Promise<void> {
+	async function refreshStrains() {
 		dispatch("resetView");
 		await fetchAndStoreStrains();
 	}
@@ -80,7 +96,7 @@
 		text-align: center;
 		padding: 1rem;
 		width: 600px;
-		color: green
+		color: green;
 	}
 	.refresh-icon {
 		width: 14px;
