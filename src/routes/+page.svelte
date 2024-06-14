@@ -17,6 +17,12 @@
 		strainCount = 0;
 	}
 
+	function navigateToFlowzz() {
+		chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+			chrome.tabs.update(tabs[0].id, { url: "https://flowzz.com/" });
+		});
+	}
+
 	onMount(() => {
 		chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 			const currentTab = tabs[0];
@@ -29,7 +35,11 @@
 
 {#if showError}
 	<div class="error">
-		<p>Open https://flowzz.com/ and log on to use this extension.</p>
+		<p>
+			Open 
+			<a href="#" on:click|preventDefault={navigateToFlowzz}>flowzz.com</a> 
+			and log on to use this extension.
+		</p>
 	</div>
 {:else}
 	<main>
@@ -64,5 +74,10 @@
 		text-align: center;
 		padding: 2rem;
 		font-size: 1.5rem;
+	}
+	.error a {
+		color: white;
+		text-decoration: underline;
+		cursor: pointer;
 	}
 </style>
