@@ -14,6 +14,7 @@ Features:
 ![extension1](demo/extension1.png)
 ![extension2](demo/extension2.png)
 ![extension2](demo/extension3.png)
+
 Hint: This extension has been fully generated with the help of ChatGTP.
 
 Installation:
