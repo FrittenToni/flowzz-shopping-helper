@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let selectedStrains: { id: number; name: string; vendors: { name: string; price: number }[] }[] = [];
+	export let selectedStrains: { id: number; name: string; vendors: { name: string; price: number }[]; amount: number }[] = [];
 
 	let priceComparisonData = [];
 
@@ -10,7 +10,13 @@
 		// Initialize vendor map with all vendors for the first strain
 		if (selectedStrains.length > 0) {
 			for (const vendor of selectedStrains[0].vendors) {
-				vendorPrices.set(vendor.name, { name: vendor.name, prices: { [selectedStrains[0].name]: vendor.price }, total: vendor.price });
+				vendorPrices.set(vendor.name, {
+					name: vendor.name,
+					prices: { [selectedStrains[0].name]: vendor.price },
+					total: vendor.price * selectedStrains[0].amount,
+					totalPrice: vendor.price,
+					totalAmount: selectedStrains[0].amount
+				});
 			}
 
 			// Iterate over remaining strains and update the vendor prices map
@@ -18,8 +24,11 @@
 				const strain = selectedStrains[i];
 				for (const vendor of strain.vendors) {
 					if (vendorPrices.has(vendor.name)) {
-						vendorPrices.get(vendor.name).prices[strain.name] = vendor.price;
-						vendorPrices.get(vendor.name).total += vendor.price;
+						const vendorData = vendorPrices.get(vendor.name);
+						vendorData.prices[strain.name] = vendor.price;
+						vendorData.total += vendor.price * strain.amount;
+						vendorData.totalPrice += vendor.price;
+						vendorData.totalAmount += strain.amount;
 					}
 				}
 
@@ -37,6 +46,7 @@
 			// Sort by total price ascending and round total to 2 decimal places
 			priceComparisonData.forEach(vendor => {
 				vendor.total = parseFloat(vendor.total.toFixed(2));
+				vendor.totalPrice = parseFloat(vendor.totalPrice.toFixed(2));
 			});
 			priceComparisonData.sort((a, b) => a.total - b.total);
 		}
@@ -60,9 +70,9 @@
 				<tr>
 					<td>{vendor.name}</td>
 					{#each selectedStrains as strain}
-						<td>{vendor.prices[strain.name]}</td>
+						<td>{(vendor.prices[strain.name] * strain.amount).toFixed(2)} ({vendor.prices[strain.name]})</td>
 					{/each}
-					<td>{vendor.total}</td>
+					<td>{vendor.total.toFixed(2)} ({vendor.totalPrice.toFixed(2)})</td>
 				</tr>
 			{/each}
 		</tbody>
