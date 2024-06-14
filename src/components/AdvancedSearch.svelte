@@ -11,6 +11,8 @@
     let ratingMin = 0;
     let scoreCountMin = 0;
     let sortOption = '';
+    let sortOrder = 'asc';
+    let showAvailableOnly = false;
   
     // Reactive computed property for filtered strains
     $: filteredStrains = cannabisStrains.filter(strain => {
@@ -23,22 +25,32 @@
       // Apply rating filter
       const isRatingInRange = strain.ratings_score >= ratingMin && strain.ratings_count >= scoreCountMin;
   
-      return isPriceInRange && isThcInRange && isRatingInRange;
+      // Apply availability filter
+      const isAvailable = showAvailableOnly ? strain.availibility === 1 : true;
+  
+      return isPriceInRange && isThcInRange && isRatingInRange && isAvailable;
     }).sort((a, b) => {
+      let comparison = 0;
       switch (sortOption) {
-        case 'alphabetAsc':
-          return a.name.localeCompare(b.name);
-        case 'alphabetDesc':
-          return b.name.localeCompare(a.name);
+        case 'name':
+          comparison = a.name.localeCompare(b.name);
+          break;
         case 'price':
-          return a.min_price - b.min_price;
+          comparison = a.min_price - b.min_price;
+          break;
         case 'rating':
-          return b.ratings_score - a.ratings_score;
+          comparison = b.ratings_score - a.ratings_score;
+          break;
         case 'thc':
-          return b.thc - a.thc;
+          comparison = b.thc - a.thc;
+          break;
+        case 'reviewCount':
+          comparison = b.ratings_count - a.ratings_count;
+          break;
         default:
-          return 0;
+          break;
       }
+      return sortOrder === 'asc' ? comparison : -comparison;
     });
   
     function openInCurrentTab(url) {
@@ -55,16 +67,16 @@
         thcMax,
         ratingMin,
         scoreCountMin,
-        sortOption
+        sortOption,
+        sortOrder,
+        showAvailableOnly
       };
-      console.log("Saving state:", state); // Debug log
       localStorage.setItem('advancedSearchState', JSON.stringify(state));
     }
   
     function loadState() {
       const state = JSON.parse(localStorage.getItem('advancedSearchState'));
       if (state) {
-        console.log("Loading state:", state); // Debug log
         priceMin = state.priceMin;
         priceMax = state.priceMax;
         thcMin = state.thcMin;
@@ -72,8 +84,8 @@
         ratingMin = state.ratingMin;
         scoreCountMin = state.scoreCountMin;
         sortOption = state.sortOption;
-      } else {
-        console.log("No state found in localStorage."); // Debug log
+        sortOrder = state.sortOrder;
+        showAvailableOnly = state.showAvailableOnly;
       }
     }
   
@@ -85,6 +97,8 @@
       ratingMin = 0;
       scoreCountMin = 0;
       sortOption = '';
+      sortOrder = 'asc';
+      showAvailableOnly = false;
       saveState();
     }
   
@@ -107,26 +121,36 @@
         <input type="number" bind:value={thcMax} min="0" max="100" placeholder="Max THC" on:input={saveState}/>
       </div>
       <div class="filter-item">
-        <label>Score:</label>
+        <label>Review Score:</label>
         <input type="number" bind:value={ratingMin} min="0" max="5" step="0.1" placeholder="Min Score" on:input={saveState}/>
       </div>
       <div class="filter-item">
-        <label>Score Count:</label>
+        <label>Min Reviews:</label>
         <input type="number" bind:value={scoreCountMin} min="0" placeholder="Min Score Count" on:input={saveState}/>
       </div>
       <div class="filter-item">
         <label>Sort By:</label>
         <select bind:value={sortOption} on:change={saveState}>
           <option value="">None</option>
-          <option value="alphabetAsc">Alphabet (ASC)</option>
-          <option value="alphabetDesc">Alphabet (DESC)</option>
+          <option value="name">Name</option>
           <option value="price">Price</option>
           <option value="rating">Rating</option>
           <option value="thc">THC</option>
+          <option value="reviewCount">Review Count</option>
+        </select>
+        <select bind:value={sortOrder} on:change={saveState}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
         </select>
       </div>
       <div class="filter-item">
         <button class="clear-button" on:click={clearFilters}>Clear</button>
+      </div>
+      <div class="filter-item checkbox-item">
+        <label class="checkbox-container">
+          <input type="checkbox" bind:checked={showAvailableOnly} on:change={saveState}/>
+          Show Available Only
+        </label>
       </div>
     </div>
   
@@ -157,6 +181,18 @@
       flex-direction: column;
       align-items: center;
     }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+    .checkbox-container input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
     label {
       margin-bottom: 0.5rem;
     }
@@ -172,7 +208,7 @@
       cursor: pointer;
     }
     .clear-button {
-      margin-top: 24px;
+      margin-top: 25px;
     }
     ul {
       list-style-type: none;

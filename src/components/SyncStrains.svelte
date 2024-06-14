@@ -30,6 +30,7 @@
 				min_price: strain.min_price,
 				max_price: strain.max_price,
 				url: strain.url,
+				availibility: strain.availibility
 			}));
 			strainCount = strains.length;
 			updateMessage(`${strainCount} Cannabis Strains available`);
@@ -56,6 +57,7 @@
 				min_price: strain.min_price,
 				max_price: strain.max_price,
 				url: strain.url,
+				availibility: strain.availibility
 			}));
 			strainCount = strains.length;
 			dispatch("strainsUpdated", { cannabisStrains, strainCount });
