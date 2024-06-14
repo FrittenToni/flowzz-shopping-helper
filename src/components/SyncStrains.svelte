@@ -5,30 +5,19 @@
 	let loading = false;
 	let message = "";
 	let strainCount = 0;
-	let cannabisStrains: {
-		id: number;
-		name: string;
-		thc: number;
-		cbd: number;
-		genetic: string;
-		ratings_score: number;
-		ratings_count: number;
-		min_price: number;
-		max_price: number;
-		url: string;
-	}[] = [];
+	let cannabisStrains = [];
 
 	const dispatch = createEventDispatcher();
 
-	function updateMessage(newMessage: string): void {
+	function updateMessage(newMessage) {
 		message = newMessage;
 	}
 
-	async function loadStrains(): Promise<void> {
+	async function loadStrains() {
 		const storedStrains = localStorage.getItem("cannabisStrains");
 		if (storedStrains) {
 			const strains = JSON.parse(storedStrains);
-			cannabisStrains = strains.map((strain: any) => ({
+			cannabisStrains = strains.map((strain) => ({
 				id: strain.id,
 				name: strain.name,
 				thc: strain.thc,
@@ -48,13 +37,13 @@
 		}
 	}
 
-	async function fetchAndStoreStrains(): Promise<void> {
+	async function fetchAndStoreStrains() {
 		loading = true;
 		await fetchStrains(updateMessage);
 		const storedStrains = localStorage.getItem("cannabisStrains");
 		if (storedStrains) {
 			const strains = JSON.parse(storedStrains);
-			cannabisStrains = strains.map((strain: any) => ({
+			cannabisStrains = strains.map((strain) => ({
 				id: strain.id,
 				name: strain.name,
 				thc: strain.thc,
@@ -72,7 +61,7 @@
 		loading = false;
 	}
 
-	async function refreshStrains(): Promise<void> {
+	async function refreshStrains() {
 		dispatch("resetView");
 		await fetchAndStoreStrains();
 	}
