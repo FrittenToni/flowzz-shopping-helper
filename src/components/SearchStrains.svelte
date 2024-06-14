@@ -15,10 +15,11 @@
 		vendors: { name: string; price: number }[];
 		loadingVendors: boolean;
 		noVendors: boolean;
+		amount: number;
 	};
 
 	let searchFields: SearchField[] = [
-		{ id: 1, inputValue: '', selectedStrain: null, vendors: [], loadingVendors: false, noVendors: false }
+		{ id: 1, inputValue: '', selectedStrain: null, vendors: [], loadingVendors: false, noVendors: false, amount: 1 }
 	];
 	let nextId = 2;
 
@@ -60,7 +61,7 @@
 	function addSearchField() {
 		searchFields = [
 			...searchFields,
-			{ id: nextId++, inputValue: '', selectedStrain: null, vendors: [], loadingVendors: false, noVendors: false }
+			{ id: nextId++, inputValue: '', selectedStrain: null, vendors: [], loadingVendors: false, noVendors: false, amount: 1 }
 		];
 		saveState();
 	}
@@ -78,7 +79,7 @@
 
 	function clearSearchFields() {
 		searchFields = [
-			{ id: 1, inputValue: '', selectedStrain: null, vendors: [], loadingVendors: false, noVendors: false }
+			{ id: 1, inputValue: '', selectedStrain: null, vendors: [], loadingVendors: false, noVendors: false, amount: 1 }
 		];
 		nextId = 2;
 		saveState();
@@ -112,6 +113,19 @@
 			];
 			saveState();
 		}
+	}
+
+	async function handleAmountChange(event) {
+		const index = event.detail.index;
+		const amount = event.detail.amount;
+		const field = { ...searchFields[index] };
+		field.amount = amount;
+		searchFields = [
+			...searchFields.slice(0, index),
+			field,
+			...searchFields.slice(index + 1)
+		];
+		saveState();
 	}
 
 	async function fetchVendors(index: number): Promise<void> {
@@ -155,7 +169,8 @@
 		.map(field => ({
 			id: field.selectedStrain.id,
 			name: field.selectedStrain.name,
-			vendors: field.vendors
+			vendors: field.vendors,
+			amount: field.amount
 		}));
 </script>
 
@@ -185,6 +200,7 @@
 			{index}
 			{cannabisStrains}
 			on:inputChange={handleInputChange}
+			on:amountChange={handleAmountChange}
 			on:removeField={removeSearchField}
 		/>
 	{/each}

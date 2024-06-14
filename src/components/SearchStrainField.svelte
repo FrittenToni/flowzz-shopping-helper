@@ -11,6 +11,14 @@
 		dispatch('inputChange', { index, value: event.target.value });
 	}
 
+	function handleAmountChange(event) {
+		let amount = parseFloat(event.target.value);
+		if (isNaN(amount) || amount < 0) {
+			amount = 1;
+		}
+		dispatch('amountChange', { index, amount });
+	}
+
 	function handleRemoveField() {
 		dispatch('removeField', { index });
 	}
@@ -29,7 +37,18 @@
 			<option value={strain.name}>{strain.name}</option>
 		{/each}
 	</datalist>
+
+	<input
+		type="number"
+		min="1"
+		id={"amountInput" + field.id}
+		placeholder="Amount"
+		bind:value={field.amount}
+		on:input={handleAmountChange}
+	/>
+
 	<button on:click={handleRemoveField}>-</button>
+	
 	{#if field.loadingVendors}
 		<p>Loading...</p>
 	{:else if field.selectedStrain}
@@ -41,6 +60,7 @@
 					<tr>
 						<th>Vendor</th>
 						<th>Price</th>
+						<th>Total Amount</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,6 +68,7 @@
 						<tr>
 							<td>{vendor.name}</td>
 							<td>{vendor.price}</td>
+							<td>{(vendor.price * field.amount).toFixed(2)}</td>
 						</tr>
 					{/each}
 				</tbody>
@@ -61,7 +82,7 @@
 		margin-top: 1rem;
 		padding: 0.5rem;
 		font-size: 1rem;
-		width: 400px;
+		width: 200px;
 	}
 	table {
 		margin-top: 1rem;
