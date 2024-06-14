@@ -23,7 +23,7 @@
       const isThcInRange = strain.thc >= thcMin && strain.thc <= thcMax;
   
       // Apply rating filter
-      const isRatingInRange = strain.ratings_score >= ratingMin && strain.ratings_count >= scoreCountMin;
+      const isRatingInRange = (strain.ratings_score ?? 0) >= ratingMin && (strain.ratings_count ?? 0) >= scoreCountMin;
   
       // Apply availability filter
       const isAvailable = showAvailableOnly ? strain.availibility === 1 : true;
@@ -155,13 +155,28 @@
     </div>
   
     <h3>Filtered Strains ({filteredStrains.length})</h3>
-    <ul>
-      {#each filteredStrains as strain}
-        <li on:click={() => openInCurrentTab(`https://flowzz.com/product/${strain.url}`)} class="clickable">
-          {strain.name} - {strain.min_price} - {strain.thc}% THC - Rating: {strain.ratings_score} ({strain.ratings_count} reviews) - Price Range: {strain.min_price} - {strain.max_price}
-        </li>
-      {/each}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>THC</th>
+          <th>Rating</th>
+          <th>Price Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each filteredStrains as strain}
+          <tr>
+            <td class="clickable" on:click={() => openInCurrentTab(`https://flowzz.com/product/${strain.url}`)}>{strain.name}</td>
+            <td>{strain.min_price}</td>
+            <td>{strain.thc}%</td>
+            <td>{(strain.ratings_score ?? 0)} ({(strain.ratings_count ?? 0)} reviews)</td>
+            <td>{strain.min_price} - {strain.max_price}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
   </main>
   
   <style>
@@ -210,14 +225,19 @@
     .clear-button {
       margin-top: 25px;
     }
-    ul {
-      list-style-type: none;
-      padding: 0;
+    table {
+      width: 100%;
+      border-collapse: collapse;
       margin-top: 1rem;
     }
-    li {
-      margin-bottom: 0.5rem;
-      cursor: pointer;
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      color: black; /* Set text color to black */
+    }
+    th {
+      background-color: #f2f2f2;
     }
     .clickable {
       cursor: pointer;
