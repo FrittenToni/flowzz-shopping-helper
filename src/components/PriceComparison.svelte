@@ -70,9 +70,19 @@
 				<tr>
 					<td>{vendor.name}</td>
 					{#each selectedStrains as strain}
-						<td>{(vendor.prices[strain.name] * strain.amount).toFixed(2)} ({vendor.prices[strain.name]})</td>
+						<td>
+							{(vendor.prices[strain.name] * strain.amount).toFixed(2)}
+							{#if strain.amount > 1}
+								({vendor.prices[strain.name]})
+							{/if}
+						</td>
 					{/each}
-					<td>{vendor.total.toFixed(2)} ({vendor.totalPrice.toFixed(2)})</td>
+					<td>
+						{vendor.total.toFixed(2)}
+						{#if selectedStrains.some(strain => strain.amount > 1)}
+							({vendor.totalPrice.toFixed(2)})
+						{/if}
+					</td>
 				</tr>
 			{/each}
 		</tbody>

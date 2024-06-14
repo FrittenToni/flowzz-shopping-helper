@@ -1,33 +1,817 @@
 {
-	"name": "flowzz-shopping-helper",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test": "vitest",
-		"lint": "eslint ."
+	"message": {
+		"data": [
+			{
+				"id": 603,
+				"url": "cannis-1-17-cbd-avidekel",
+				"producer": "Fette Pharma",
+				"name": "RE:CANNIS 1/17 CBD",
+				"thc": 1,
+				"cbd": 17,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Lesotho",
+				"created_at": "2023-05-09T12:43:56.659Z",
+				"updated_at": "2024-06-04T20:17:07.653Z",
+				"published_at": "2024-06-04T20:17:07.586Z",
+				"created_by_id": 11,
+				"updated_by_id": 11,
+				"locale": "de",
+				"description": null,
+				"strain_name": "RE:CANNIS 1/15",
+				"producer_name": "Fette Pharma",
+				"ratings_score": null,
+				"ratings_count": null,
+				"min_price": 8.93,
+				"max_price": 9.95,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 489,
+						"attributes": {
+							"alternative_text": "CANNIS 1/15 CBD",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/d6feacea2d56198fc990e9fa05352eac.png",
+							"formats": {
+								"large": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/090136e9efc5a94b74f84641f0eaf0ea.png",
+									"hash": "090136e9efc5a94b74f84641f0eaf0ea",
+									"mime": "image/png",
+									"name": "large_cannis-1-15-cbd-g40.png",
+									"path": null,
+									"size": 1210.95,
+									"width": 1000,
+									"height": 1000
+								},
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/f03208681d6fb8a3545b14228d138b37.png",
+									"hash": "f03208681d6fb8a3545b14228d138b37",
+									"mime": "image/png",
+									"name": "small_cannis-1-15-cbd-g40.png",
+									"path": null,
+									"size": 324.34,
+									"width": 500,
+									"height": 500
+								},
+								"medium": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/e6fe069d429378d6ad3ca0efb089d733.png",
+									"hash": "e6fe069d429378d6ad3ca0efb089d733",
+									"mime": "image/png",
+									"name": "medium_cannis-1-15-cbd-g40.png",
+									"path": null,
+									"size": 706.83,
+									"width": 750,
+									"height": 750
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/96f8d131505ba8be573a85a4c374951c.png",
+									"hash": "96f8d131505ba8be573a85a4c374951c",
+									"mime": "image/png",
+									"name": "thumbnail_cannis-1-15-cbd-g40.png",
+									"path": null,
+									"size": 34.13,
+									"width": 156,
+									"height": 156
+								}
+							},
+							"img_id": 489,
+							"alternativeText": "CANNIS 1/15 CBD",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/d6feacea2d56198fc990e9fa05352eac.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 602,
+				"url": "enua-22-1-atg-atlantic-glue-gg4",
+				"producer": "Therismos",
+				"name": "enua 22/1 ATG Atlantic Glue GG4",
+				"thc": 22,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-03-25T20:37:35.874Z",
+				"updated_at": "2024-06-03T11:25:35.989Z",
+				"published_at": "2024-06-03T11:25:35.923Z",
+				"created_by_id": 11,
+				"updated_by_id": 11,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Atlantic Glue GG4",
+				"producer_name": "enua Pharma",
+				"ratings_score": null,
+				"ratings_count": null,
+				"min_price": null,
+				"max_price": null,
+				"availibility": 4,
+				"image": {
+					"data": {
+						"id": 1710,
+						"attributes": {
+							"alternative_text": "therismos-30-1-atg-atlantic-glue-gg4.png",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/37a2e40c0ee2f08e3f45a329cb6dc841.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/8e4c26205648df09ca9be8f4842b3673.png",
+									"hash": "8e4c26205648df09ca9be8f4842b3673",
+									"mime": "image/png",
+									"name": "small_therismos-30-1-atg-atlantic-glue-gg4.png",
+									"path": null,
+									"size": 134.46,
+									"width": 400,
+									"height": 400
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/c5713b13cf621afd9ec66ca768ad75e6.png",
+									"hash": "c5713b13cf621afd9ec66ca768ad75e6",
+									"mime": "image/png",
+									"name": "thumbnail_therismos-30-1-atg-atlantic-glue-gg4.png",
+									"path": null,
+									"size": 22.73,
+									"width": 156,
+									"height": 156
+								}
+							},
+							"img_id": 1710,
+							"alternativeText": "therismos-30-1-atg-atlantic-glue-gg4.png",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/37a2e40c0ee2f08e3f45a329cb6dc841.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 601,
+				"url": "demecan-mc-strong-drop-magic-marker-2",
+				"producer": null,
+				"name": "Demecan MC Strong Drop Magic Marker #2",
+				"thc": 26.3,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-05-30T14:48:11.838Z",
+				"updated_at": "2024-05-30T14:48:28.101Z",
+				"published_at": "2024-05-30T14:48:28.035Z",
+				"created_by_id": 9,
+				"updated_by_id": 9,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Magic Marker #2",
+				"producer_name": "Demecan",
+				"ratings_score": 5,
+				"ratings_count": 3,
+				"min_price": 8.4,
+				"max_price": 11,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1875,
+						"attributes": {
+							"alternative_text": "demecan-mc-strong-drop-magic-marker-2",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/068575fdb47827147c5ca3005af003e0.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/3ed715446b0514db9cdd3cedda9a3796.png",
+									"hash": "3ed715446b0514db9cdd3cedda9a3796",
+									"mime": "image/png",
+									"name": "small_Marker (1).png",
+									"path": null,
+									"size": 107.85,
+									"width": 400,
+									"height": 400,
+									"sizeInBytes": 107851
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/96ff152f6dd354e1e490d9d35fefb367.png",
+									"hash": "96ff152f6dd354e1e490d9d35fefb367",
+									"mime": "image/png",
+									"name": "thumbnail_Marker (1).png",
+									"path": null,
+									"size": 17.89,
+									"width": 156,
+									"height": 156,
+									"sizeInBytes": 17894
+								}
+							},
+							"img_id": 1875,
+							"alternativeText": "demecan-mc-strong-drop-magic-marker-2",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/068575fdb47827147c5ca3005af003e0.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 600,
+				"url": "patagonia-plus-tn-the-new",
+				"producer": null,
+				"name": "Patagonia Plus TN The New",
+				"thc": 25.46,
+				"cbd": 0.06,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-05-30T14:38:39.253Z",
+				"updated_at": "2024-05-30T14:44:39.176Z",
+				"published_at": "2024-05-30T14:44:39.104Z",
+				"created_by_id": 9,
+				"updated_by_id": 9,
+				"locale": "de",
+				"description": null,
+				"strain_name": "The New",
+				"producer_name": "Cantourage",
+				"ratings_score": 5,
+				"ratings_count": 3,
+				"min_price": 9.3,
+				"max_price": 10.99,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1874,
+						"attributes": {
+							"alternative_text": "patagonia-plus-tn-the-new",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/13175a6b2f26a216fd0a85ada99e8715.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/b3f3f4fdb9e8f49af8c12a3ec15480d6.png",
+									"hash": "b3f3f4fdb9e8f49af8c12a3ec15480d6",
+									"mime": "image/png",
+									"name": "small_The new (1).png",
+									"path": null,
+									"size": 123.32,
+									"width": 400,
+									"height": 400,
+									"sizeInBytes": 123320
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/a8893f2eb0aed3029dd438a380e3314c.png",
+									"hash": "a8893f2eb0aed3029dd438a380e3314c",
+									"mime": "image/png",
+									"name": "thumbnail_The new (1).png",
+									"path": null,
+									"size": 20.61,
+									"width": 156,
+									"height": 156,
+									"sizeInBytes": 20607
+								}
+							},
+							"img_id": 1874,
+							"alternativeText": "patagonia-plus-tn-the-new",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/13175a6b2f26a216fd0a85ada99e8715.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 599,
+				"url": "cnbs-vv-30-1-varnish-vapor",
+				"producer": null,
+				"name": "CNBS VV 30/1 Varnish Vapor",
+				"thc": 31.2,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-05-29T12:09:49.561Z",
+				"updated_at": "2024-05-29T12:19:06.057Z",
+				"published_at": "2024-05-29T12:09:54.290Z",
+				"created_by_id": 9,
+				"updated_by_id": 9,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Varnish Vapor",
+				"producer_name": "Medical CNBS",
+				"ratings_score": 5,
+				"ratings_count": 2,
+				"min_price": 9.95,
+				"max_price": 12.45,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1865,
+						"attributes": {
+							"alternative_text": "cnbs-vv-30-1-varnish-vapor",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/b0aa2e093087a3f5f0b869bbc436430b.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/af1984add2503541be201d1bf93dddd5.png",
+									"hash": "af1984add2503541be201d1bf93dddd5",
+									"mime": "image/png",
+									"name": "small_CNBS.png",
+									"path": null,
+									"size": 137.03,
+									"width": 400,
+									"height": 400,
+									"sizeInBytes": 137026
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/825ee95082cff5fc11f193cffe7285d9.png",
+									"hash": "825ee95082cff5fc11f193cffe7285d9",
+									"mime": "image/png",
+									"name": "thumbnail_CNBS.png",
+									"path": null,
+									"size": 22.93,
+									"width": 156,
+									"height": 156,
+									"sizeInBytes": 22926
+								}
+							},
+							"img_id": 1865,
+							"alternativeText": "cnbs-vv-30-1-varnish-vapor",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/b0aa2e093087a3f5f0b869bbc436430b.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 598,
+				"url": "enua-27-1-atg-atlantic-glue-gg4",
+				"producer": "Therismos",
+				"name": "enua 27/1 ATG Atlantic Glue GG4",
+				"thc": 27,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-03-25T20:37:35.874Z",
+				"updated_at": "2024-05-27T17:10:03.519Z",
+				"published_at": "2024-05-27T17:10:03.407Z",
+				"created_by_id": 11,
+				"updated_by_id": 11,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Atlantic Glue GG4",
+				"producer_name": "enua Pharma",
+				"ratings_score": 5,
+				"ratings_count": 1,
+				"min_price": 9.09,
+				"max_price": 13.57,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1710,
+						"attributes": {
+							"alternative_text": "therismos-30-1-atg-atlantic-glue-gg4.png",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/37a2e40c0ee2f08e3f45a329cb6dc841.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/8e4c26205648df09ca9be8f4842b3673.png",
+									"hash": "8e4c26205648df09ca9be8f4842b3673",
+									"mime": "image/png",
+									"name": "small_therismos-30-1-atg-atlantic-glue-gg4.png",
+									"path": null,
+									"size": 134.46,
+									"width": 400,
+									"height": 400
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/c5713b13cf621afd9ec66ca768ad75e6.png",
+									"hash": "c5713b13cf621afd9ec66ca768ad75e6",
+									"mime": "image/png",
+									"name": "thumbnail_therismos-30-1-atg-atlantic-glue-gg4.png",
+									"path": null,
+									"size": 22.73,
+									"width": 156,
+									"height": 156
+								}
+							},
+							"img_id": 1710,
+							"alternativeText": "therismos-30-1-atg-atlantic-glue-gg4.png",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/37a2e40c0ee2f08e3f45a329cb6dc841.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 597,
+				"url": "cannis-19-1-sativa-bereshit",
+				"producer": "Fette Pharma",
+				"name": "RE:CANNIS 19/1 Sativa Bereshit",
+				"thc": 19,
+				"cbd": 1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Lesotho",
+				"created_at": "2023-05-09T12:43:46.729Z",
+				"updated_at": "2024-06-05T09:23:59.524Z",
+				"published_at": "2024-05-27T12:50:49.602Z",
+				"created_by_id": 11,
+				"updated_by_id": 10,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Bereshit",
+				"producer_name": "Fette Pharma",
+				"ratings_score": null,
+				"ratings_count": null,
+				"min_price": 9.99,
+				"max_price": 10.95,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 912,
+						"attributes": {
+							"alternative_text": "RE:CANNIS 19/1 Sativa Bereshit",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/cfd92aa7e9d46dbce7f7ebea3c4561c0.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/5ce8b7551492c23c2f73e37d332fc9a6.png",
+									"hash": "5ce8b7551492c23c2f73e37d332fc9a6",
+									"mime": "image/png",
+									"name": "small_cannis-16-1-sativa-bereshit.png",
+									"path": null,
+									"size": 187.8,
+									"width": 400,
+									"height": 400
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/1e8e90878e6a68328ee480ab29880dd3.png",
+									"hash": "1e8e90878e6a68328ee480ab29880dd3",
+									"mime": "image/png",
+									"name": "thumbnail_cannis-16-1-sativa-bereshit.png",
+									"path": null,
+									"size": 31.18,
+									"width": 156,
+									"height": 156
+								}
+							},
+							"img_id": 912,
+							"alternativeText": "RE:CANNIS 19/1 Sativa Bereshit",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/cfd92aa7e9d46dbce7f7ebea3c4561c0.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 596,
+				"url": "remexian-30-1-bag-banana-gas",
+				"producer": null,
+				"name": "Remexian 30/1 BAG Banana Gas",
+				"thc": 30,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-05-27T04:33:12.021Z",
+				"updated_at": "2024-06-05T09:24:23.303Z",
+				"published_at": "2024-05-27T04:33:30.285Z",
+				"created_by_id": 9,
+				"updated_by_id": 10,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Banana Gas",
+				"producer_name": "Remexian Pharma",
+				"ratings_score": null,
+				"ratings_count": null,
+				"min_price": 9.98,
+				"max_price": 12.95,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1868,
+						"attributes": {
+							"alternative_text": "Remexian 30/1 BAG Banana Gas",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/6696833da8f2421e3b1ca42e5d2d838d.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/d121c9a654ec9b541578889b651a052a.png",
+									"hash": "d121c9a654ec9b541578889b651a052a",
+									"mime": "image/png",
+									"name": "small_Banana (1).png",
+									"path": null,
+									"size": 103.7,
+									"width": 400,
+									"height": 400,
+									"sizeInBytes": 103704
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/cf60e017e81e0907c88ba671d62932cb.png",
+									"hash": "cf60e017e81e0907c88ba671d62932cb",
+									"mime": "image/png",
+									"name": "thumbnail_Banana (1).png",
+									"path": null,
+									"size": 17.24,
+									"width": 156,
+									"height": 156,
+									"sizeInBytes": 17240
+								}
+							},
+							"img_id": 1868,
+							"alternativeText": "Remexian 30/1 BAG Banana Gas",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/6696833da8f2421e3b1ca42e5d2d838d.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 595,
+				"url": "bathera-21-1-zashimi",
+				"producer": null,
+				"name": "Bathera 21/1 Zashimi",
+				"thc": 21,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Portugal",
+				"created_at": "2024-05-24T02:31:21.822Z",
+				"updated_at": "2024-05-27T13:47:28.443Z",
+				"published_at": "2024-05-24T02:31:52.127Z",
+				"created_by_id": 9,
+				"updated_by_id": 10,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Zashimi",
+				"producer_name": "IUVO Therapeutics",
+				"ratings_score": 2.81,
+				"ratings_count": 21,
+				"min_price": 10.69,
+				"max_price": 16.66,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1856,
+						"attributes": {
+							"alternative_text": "Bathera 21/1 Zashimi",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/4fd6781dfde28c1783b93c730df8ad34.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/73aea1626149ed192ec96b9ce83ac1c5.png",
+									"hash": "73aea1626149ed192ec96b9ce83ac1c5",
+									"mime": "image/png",
+									"name": "small_Zkittles (4).png",
+									"path": null,
+									"size": 147.31,
+									"width": 400,
+									"height": 400,
+									"sizeInBytes": 147306
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/8de9571794f8fd6cd567d0812424df5b.png",
+									"hash": "8de9571794f8fd6cd567d0812424df5b",
+									"mime": "image/png",
+									"name": "thumbnail_Zkittles (4).png",
+									"path": null,
+									"size": 24.76,
+									"width": 156,
+									"height": 156,
+									"sizeInBytes": 24761
+								}
+							},
+							"img_id": 1856,
+							"alternativeText": "Bathera 21/1 Zashimi",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/4fd6781dfde28c1783b93c730df8ad34.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 594,
+				"url": "26-1-nce-c-cherry-pie",
+				"producer": null,
+				"name": "26/1 N!CE C Cherry Pie",
+				"thc": 26,
+				"cbd": 0.1,
+				"genetic": "Indica",
+				"irradiated": false,
+				"origin": "Portugal",
+				"created_at": "2024-01-02T06:17:27.726Z",
+				"updated_at": "2024-05-27T13:46:08.290Z",
+				"published_at": "2024-05-23T10:04:14.969Z",
+				"created_by_id": 11,
+				"updated_by_id": 10,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Cherry Pie",
+				"producer_name": "Cansativa",
+				"ratings_score": 4.5,
+				"ratings_count": 2,
+				"min_price": 8.59,
+				"max_price": 12.99,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1323,
+						"attributes": {
+							"alternative_text": "26/1 N!CE C Cherry Pie",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/webp",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/a2304423a79c94c588fa935825d6e118.webp",
+							"formats": {
+								"small": {
+									"ext": ".webp",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/fd09387eb913f164877ee4f34e51c833.webp",
+									"hash": "fd09387eb913f164877ee4f34e51c833",
+									"mime": "image/webp",
+									"name": "small_9aefbdee6d4e3540c0d8977ee57382d4.webp",
+									"path": null,
+									"size": 10.92,
+									"width": 400,
+									"height": 400
+								},
+								"thumbnail": {
+									"ext": ".webp",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/1647f64e8955bc0d38e0c03981b78570.webp",
+									"hash": "1647f64e8955bc0d38e0c03981b78570",
+									"mime": "image/webp",
+									"name": "thumbnail_9aefbdee6d4e3540c0d8977ee57382d4.webp",
+									"path": null,
+									"size": 2.36,
+									"width": 156,
+									"height": 156
+								}
+							},
+							"img_id": 1323,
+							"alternativeText": "26/1 N!CE C Cherry Pie",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/a2304423a79c94c588fa935825d6e118.webp"
+						}
+					}
+				}
+			},
+			{
+				"id": 593,
+				"url": "avaay-20-1-zkt-zkittlez",
+				"producer": null,
+				"name": "avaay 20/1 ZKT Zkittlez",
+				"thc": 20,
+				"cbd": 0.1,
+				"genetic": "Hybrid",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2024-05-23T06:30:26.315Z",
+				"updated_at": "2024-05-27T13:40:39.773Z",
+				"published_at": "2024-05-23T06:30:29.921Z",
+				"created_by_id": 9,
+				"updated_by_id": 10,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Zkittlez",
+				"producer_name": "avaay",
+				"ratings_score": null,
+				"ratings_count": null,
+				"min_price": 7.99,
+				"max_price": 11.16,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1853,
+						"attributes": {
+							"alternative_text": "avaay 20/1 ZKT Zkittlez",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/1492880b8e5e972b40b62f63d1698640.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/cebf14b82990c9bda334e9023b0edf84.png",
+									"hash": "cebf14b82990c9bda334e9023b0edf84",
+									"mime": "image/png",
+									"name": "small_Zkittles (1).png",
+									"path": null,
+									"size": 115.9,
+									"width": 400,
+									"height": 400,
+									"sizeInBytes": 115896
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/a47ffd6ac5a63b801b494d044b1f8bdc.png",
+									"hash": "a47ffd6ac5a63b801b494d044b1f8bdc",
+									"mime": "image/png",
+									"name": "thumbnail_Zkittles (1).png",
+									"path": null,
+									"size": 19.13,
+									"width": 156,
+									"height": 156,
+									"sizeInBytes": 19131
+								}
+							},
+							"img_id": 1853,
+							"alternativeText": "avaay 20/1 ZKT Zkittlez",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/1492880b8e5e972b40b62f63d1698640.png"
+						}
+					}
+				}
+			},
+			{
+				"id": 592,
+				"url": "remexian-30-1-lpp-lemon-pepper-punch",
+				"producer": "Remexian Pharma",
+				"name": "Remexian 30/1 LPP Lemon Pepper Punch",
+				"thc": 30,
+				"cbd": 0.1,
+				"genetic": "Sativa",
+				"irradiated": false,
+				"origin": "Kanada",
+				"created_at": "2023-11-20T23:20:31.550Z",
+				"updated_at": "2024-05-27T13:38:52.822Z",
+				"published_at": "2024-05-22T20:49:28.409Z",
+				"created_by_id": 11,
+				"updated_by_id": 10,
+				"locale": "de",
+				"description": null,
+				"strain_name": "Lemon Pepper Punch",
+				"producer_name": "Remexian Pharma",
+				"ratings_score": 5,
+				"ratings_count": 3,
+				"min_price": 9.69,
+				"max_price": 16.99,
+				"availibility": 1,
+				"image": {
+					"data": {
+						"id": 1200,
+						"attributes": {
+							"alternative_text": "Remexian 30/1 LPP Lemon Pepper Punch",
+							"width": 1200,
+							"height": 1200,
+							"mime": "image/png",
+							"img_url": "https://flowzz.ams3.digitaloceanspaces.com/cms/0ed724125472c8c6dec8cb66a41af56d.png",
+							"formats": {
+								"small": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/c343f6686d54af61373d3a96335f8448.png",
+									"hash": "c343f6686d54af61373d3a96335f8448",
+									"mime": "image/png",
+									"name": "small_Lemon Pepper Punch (1).png",
+									"path": null,
+									"size": 148.28,
+									"width": 400,
+									"height": 400
+								},
+								"thumbnail": {
+									"ext": ".png",
+									"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/7e6bf5c7e7c023ebb2d9e27a0a651aff.png",
+									"hash": "7e6bf5c7e7c023ebb2d9e27a0a651aff",
+									"mime": "image/png",
+									"name": "thumbnail_Lemon Pepper Punch (1).png",
+									"path": null,
+									"size": 24.14,
+									"width": 156,
+									"height": 156
+								}
+							},
+							"img_id": 1200,
+							"alternativeText": "Remexian 30/1 LPP Lemon Pepper Punch",
+							"url": "https://flowzz.ams3.digitaloceanspaces.com/cms/0ed724125472c8c6dec8cb66a41af56d.png"
+						}
+					}
+				}
+			}
+		],
+		"meta": {
+			"pagination": {
+				"page": 2,
+				"pageSize": 12,
+				"pageCount": 51,
+				"total": 601
+			}
+		}
 	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
-		"@sveltejs/vite-plugin-svelte": "^3.0.0",
-		"@types/chrome": "^0.0.268",
-		"@types/eslint": "^8.56.7",
-		"eslint": "^9.0.0",
-		"eslint-plugin-svelte": "^2.36.0",
-		"globals": "^15.0.0",
-		"svelte": "^4.2.7",
-		"svelte-check": "^3.6.0",
-		"sveltekit-adapter-chrome-extension": "^2.0.1",
-		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
-		"typescript-eslint": "^8.0.0-alpha.20",
-		"vite": "^5.0.3",
-		"vitest": "^1.2.0"
-	},
-	"type": "module"
+	"error": false
 }

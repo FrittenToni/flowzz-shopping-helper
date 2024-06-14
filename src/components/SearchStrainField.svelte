@@ -13,7 +13,7 @@
 
 	function handleAmountChange(event) {
 		let amount = parseFloat(event.target.value);
-		if (isNaN(amount) || amount < 0) {
+		if (isNaN(amount) || amount < 1) {
 			amount = 1;
 		}
 		dispatch('amountChange', { index, amount });
@@ -31,6 +31,7 @@
 		placeholder="Enter strain name"
 		bind:value={field.inputValue}
 		on:input={handleInputChange}
+		class="strain-input"
 	/>
 	<datalist id="strains">
 		{#each cannabisStrains as strain}
@@ -45,6 +46,7 @@
 		placeholder="Amount"
 		bind:value={field.amount}
 		on:input={handleAmountChange}
+		class="amount-input"
 	/>
 
 	<button on:click={handleRemoveField}>-</button>
@@ -60,7 +62,9 @@
 					<tr>
 						<th>Vendor</th>
 						<th>Price</th>
-						<th>Total Amount</th>
+						{#if field.amount > 1}
+							<th>Total Amount</th>
+						{/if}
 					</tr>
 				</thead>
 				<tbody>
@@ -68,7 +72,9 @@
 						<tr>
 							<td>{vendor.name}</td>
 							<td>{vendor.price}</td>
-							<td>{(vendor.price * field.amount).toFixed(2)}</td>
+							{#if field.amount > 1}
+								<td>{(vendor.price * field.amount).toFixed(2)}</td>
+							{/if}
 						</tr>
 					{/each}
 				</tbody>
@@ -78,11 +84,17 @@
 </div>
 
 <style>
-	input {
+	.strain-input {
 		margin-top: 1rem;
 		padding: 0.5rem;
-		font-size: 1rem;
-		width: 200px;
+		font-size: 1.25rem;
+		width: 400px;
+	}
+	.amount-input {
+		margin-top: 1rem;
+		padding: 0.5rem;
+		font-size: 1.25rem;
+		width: 50px; /* Fixed width to fit up to 3 digits */
 	}
 	table {
 		margin-top: 1rem;
@@ -99,8 +111,8 @@
 	}
 	button {
 		margin-top: 1rem;
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
+		padding: 0.5rem;
+		font-size: 1.25rem;
 		cursor: pointer;
 	}
 </style>
