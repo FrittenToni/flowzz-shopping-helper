@@ -77,6 +77,17 @@
       }
     }
   
+    function clearFilters() {
+      priceMin = 0;
+      priceMax = '';
+      thcMin = 0;
+      thcMax = 100;
+      ratingMin = 0;
+      scoreCountMin = 0;
+      sortOption = '';
+      saveState();
+    }
+  
     onMount(() => {
       loadState();
     });
@@ -114,13 +125,16 @@
           <option value="thc">THC</option>
         </select>
       </div>
+      <div class="filter-item">
+        <button class="clear-button" on:click={clearFilters}>Clear</button>
+      </div>
     </div>
   
     <h3>Filtered Strains ({filteredStrains.length})</h3>
     <ul>
       {#each filteredStrains as strain}
         <li on:click={() => openInCurrentTab(`https://flowzz.com/product/${strain.url}`)} class="clickable">
-          {strain.name} - {strain.min_price} - {strain.thc}% THC - Rating: {strain.ratings_score} ({strain.ratings_count} reviews)
+          {strain.name} - {strain.min_price} - {strain.thc}% THC - Rating: {strain.ratings_score} ({strain.ratings_count} reviews) - Price Range: {strain.min_price} - {strain.max_price}
         </li>
       {/each}
     </ul>
@@ -150,6 +164,15 @@
       padding: 0.5rem;
       font-size: 1rem;
       width: 150px;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .clear-button {
+      margin-top: 24px;
     }
     ul {
       list-style-type: none;
