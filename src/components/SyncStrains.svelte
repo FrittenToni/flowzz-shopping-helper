@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from "svelte";
 	import { fetchStrains } from "$lib/syncStrains.ts";
+	import AdvancedSearch from "$components/AdvancedSearch.svelte";
 
 	let loading = false;
 	let message = "";
 	let strainCount = 0;
 	let cannabisStrains = [];
+	let showAdvancedSearch = false;
 
 	const dispatch = createEventDispatcher();
 
@@ -66,6 +68,10 @@
 		await fetchAndStoreStrains();
 	}
 
+	function toggleAdvancedSearch() {
+		showAdvancedSearch = !showAdvancedSearch;
+	}
+
 	onMount(() => {
 		loadStrains();
 	});
@@ -77,7 +83,7 @@
 	{:else}
 		<div>
 			<div>
-			{message}
+				{message}
 			</div>
 			{#if strainCount > 0}
 				<img
@@ -86,8 +92,19 @@
 					class="refresh-icon"
 					on:click={refreshStrains}
 				/>
+				<br/>
+				<div>
+					<button on:click={toggleAdvancedSearch}>
+						{showAdvancedSearch
+							? "Close Advanced Search"
+							: "Open Advanced Search"}
+					</button>
+				</div>
 			{/if}
 		</div>
+		{#if showAdvancedSearch}
+			<AdvancedSearch {cannabisStrains} />
+		{/if}
 	{/if}
 </main>
 
