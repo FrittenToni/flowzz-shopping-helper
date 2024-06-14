@@ -7,10 +7,13 @@ Features:
 * Use auto completion to select strains and to see the vendors offering them as well as their prices
 * Get an overview which vendor is selling all selected strains and sort them by price
 * Save, edit and delete presets of strains for quick price comparison
+* Advanced Search
+  * Price, THC, Score Filters
+  * Sort by Price, Rating, THC, Name
 
 ![extension1](demo/extension1.png)
 ![extension2](demo/extension2.png)
-
+![extension2](demo/extension3.png)
 Hint: This extension has been fully generated with the help of ChatGTP.
 
 Installation:
