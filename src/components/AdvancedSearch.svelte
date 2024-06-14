@@ -159,7 +159,6 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Price</th>
           <th>THC</th>
           <th>Rating</th>
           <th>Price Range</th>
@@ -169,7 +168,6 @@
         {#each filteredStrains as strain}
           <tr>
             <td class="clickable" on:click={() => openInCurrentTab(`https://flowzz.com/product/${strain.url}`)}>{strain.name}</td>
-            <td>{strain.min_price}</td>
             <td>{strain.thc}%</td>
             <td>{(strain.ratings_score ?? 0)} ({(strain.ratings_count ?? 0)} reviews)</td>
             <td>{strain.min_price} - {strain.max_price}</td>
