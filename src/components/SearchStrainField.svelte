@@ -22,9 +22,19 @@
 	function handleRemoveField() {
 		dispatch('removeField', { index });
 	}
+
+	function navigateToUrl(url: string) {
+		chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+			chrome.tabs.update(tabs[0].id, { url });
+		});
+	}
+
+	$: selectedStrainDetails = cannabisStrains.find(
+		(strain) => strain.name.toLowerCase() === field.inputValue.toLowerCase()
+	);
 </script>
 
-<div>
+<div class="input-group">
 	<input
 		list="strains"
 		id={"strainInput" + field.id}
@@ -50,40 +60,55 @@
 	/>
 
 	<button on:click={handleRemoveField}>-</button>
-	
-	{#if field.loadingVendors}
-		<p>Loading...</p>
-	{:else if field.selectedStrain}
-		{#if field.noVendors}
-			<p>No Vendors found.</p>
-		{:else if field.vendors.length > 0}
-			<table>
-				<thead>
-					<tr>
-						<th>Vendor</th>
-						<th>Price</th>
-						{#if field.amount > 1}
-							<th>Total Amount</th>
-						{/if}
-					</tr>
-				</thead>
-				<tbody>
-					{#each field.vendors as vendor}
-						<tr>
-							<td>{vendor.name}</td>
-							<td>{vendor.price}</td>
-							{#if field.amount > 1}
-								<td>{(vendor.price * field.amount).toFixed(2)}</td>
-							{/if}
-						</tr>
-					{/each}
-				</tbody>
-			</table>
-		{/if}
-	{/if}
 </div>
 
+{#if selectedStrainDetails}
+	<p>
+		<a href={"https://flowzz.com/product/" + selectedStrainDetails.url} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/product/" + selectedStrainDetails.url); }}>
+			Details
+		</a>
+		{selectedStrainDetails.genetic} ({selectedStrainDetails.thc}%/{selectedStrainDetails.cbd}%), 
+		Score: {selectedStrainDetails.ratings_score} ScoreCount: {selectedStrainDetails.ratings_count}
+	</p>
+{/if}
+
+{#if field.loadingVendors}
+	<p>Loading...</p>
+{:else if field.selectedStrain}
+	{#if field.noVendors}
+		<p>No Vendors found.</p>
+	{:else if field.vendors.length > 0}
+		<table>
+			<thead>
+				<tr>
+					<th>Vendor</th>
+					<th>Price</th>
+					{#if field.amount > 1}
+						<th>Total Amount</th>
+					{/if}
+				</tr>
+			</thead>
+			<tbody>
+				{#each field.vendors as vendor}
+					<tr>
+						<td>{vendor.name}</td>
+						<td>{vendor.price}</td>
+						{#if field.amount > 1}
+							<td>{(vendor.price * field.amount).toFixed(2)}</td>
+						{/if}
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	{/if}
+{/if}
+
 <style>
+	.input-group {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
 	.strain-input {
 		margin-top: 1rem;
 		padding: 0.5rem;
@@ -111,7 +136,7 @@
 	}
 	button {
 		margin-top: 1rem;
-		padding: 0.5rem;
+		padding: 0.5rem 1.25rem;
 		font-size: 1.25rem;
 		cursor: pointer;
 	}

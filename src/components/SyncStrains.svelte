@@ -5,7 +5,18 @@
 	let loading = false;
 	let message = "";
 	let strainCount = 0;
-	let cannabisStrains: { id: number; name: string }[] = [];
+	let cannabisStrains: {
+		id: number;
+		name: string;
+		thc: number;
+		cbd: number;
+		genetic: string;
+		ratings_score: number;
+		ratings_count: number;
+		min_price: number;
+		max_price: number;
+		url: string;
+	}[] = [];
 
 	const dispatch = createEventDispatcher();
 
@@ -20,6 +31,14 @@
 			cannabisStrains = strains.map((strain: any) => ({
 				id: strain.id,
 				name: strain.name,
+				thc: strain.thc,
+				cbd: strain.cbd,
+				genetic: strain.genetic,
+				ratings_score: strain.ratings_score,
+				ratings_count: strain.ratings_count,
+				min_price: strain.min_price,
+				max_price: strain.max_price,
+				url: strain.url,
 			}));
 			strainCount = strains.length;
 			updateMessage(`${strainCount} Cannabis Strains available`);
@@ -38,6 +57,14 @@
 			cannabisStrains = strains.map((strain: any) => ({
 				id: strain.id,
 				name: strain.name,
+				thc: strain.thc,
+				cbd: strain.cbd,
+				genetic: strain.genetic,
+				ratings_score: strain.ratings_score,
+				ratings_count: strain.ratings_count,
+				min_price: strain.min_price,
+				max_price: strain.max_price,
+				url: strain.url,
 			}));
 			strainCount = strains.length;
 			dispatch("strainsUpdated", { cannabisStrains, strainCount });
@@ -80,7 +107,7 @@
 		text-align: center;
 		padding: 1rem;
 		width: 600px;
-		color: green
+		color: green;
 	}
 	.refresh-icon {
 		width: 14px;

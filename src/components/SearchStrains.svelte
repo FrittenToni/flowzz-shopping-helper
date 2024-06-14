@@ -223,8 +223,8 @@
 	}
 	button {
 		margin-top: 1rem;
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
+		padding: 0.5rem 1.25rem;
+		font-size: 1.25rem;
 		cursor: pointer;
 	}
 </style>
