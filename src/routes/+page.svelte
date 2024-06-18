@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SyncStrains from "$components/SyncStrains.svelte";
-	import SearchStrains from "$components/SearchStrains.svelte";
   
 	let cannabisStrains = [];
 	let strainCount = 0;
@@ -14,32 +13,29 @@
 	  cannabisStrains = [];
 	  strainCount = 0;
 	}
-  </script>
+</script>
   
-  <main>
+<main>
 	<div class="header">
-	  <h1>Flowzz Shopping Helper</h1>
+		<h1>Flowzz Shopping Helper</h1>
 	</div>
   
 	<SyncStrains
-	  on:strainsUpdated={handleStrainsUpdated}
-	  on:resetView={handleResetView}
+		on:strainsUpdated={handleStrainsUpdated}
+		on:resetView={handleResetView}
+		{cannabisStrains}
+		{strainCount}
 	/>
+</main>
   
-	{#if strainCount > 0}
-	  <SearchStrains {cannabisStrains} {strainCount} />
-	{/if}
-  </main>
-  
-  <style>
+<style>
 	main {
-	  text-align: center;
+		text-align: center;
 	}
 	.header {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  color: green;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: green;
 	}
-  </style>
-  
+</style>

@@ -175,6 +175,7 @@
 </script>
 
 <main>
+	<h2>Price Finder</h2>
 	<PresetManager
 		{presets}
 		{selectedPreset}
@@ -216,10 +217,14 @@
 </main>
 
 <style>
+	h2 {
+		color: green;
+	}
 	main {
 		text-align: center;
 		padding: 1rem;
 		width: 600px;
+		color: black;
 	}
 	button {
 		margin-top: 1rem;
