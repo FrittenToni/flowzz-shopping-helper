@@ -31,6 +31,7 @@
 		  max_price: strain.max_price,
 		  url: strain.url,
 		  availibility: strain.availibility,
+		  strain_name: strain.strain_name
 		}));
 		strainCount = strains.length;
 		updateMessage(`${strainCount} Cannabis Strains available`);
@@ -58,6 +59,7 @@
 		  max_price: strain.max_price,
 		  url: strain.url,
 		  availibility: strain.availibility,
+		  strain_name: strain.strain_name
 		}));
 		strainCount = strains.length;
 		dispatch("strainsUpdated", { cannabisStrains, strainCount });
@@ -90,9 +92,9 @@
 	  loadStrains();
 	  loadState();
 	});
-  </script>
+</script>
   
-  <main>
+<main>
 	{#if loading}
 	  <p>{message}</p>
 	{:else}
@@ -121,9 +123,9 @@
 		<AdvancedSearch {cannabisStrains} />
 	  {/if}
 	{/if}
-  </main>
+</main>
   
-  <style>
+<style>
 	main {
 	  text-align: center;
 	  padding: 1rem;
@@ -135,5 +137,4 @@
 	  height: 14px;
 	  cursor: pointer;
 	}
-  </style>
-  
+</style>

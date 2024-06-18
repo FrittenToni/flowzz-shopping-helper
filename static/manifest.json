@@ -5,8 +5,7 @@
     "permissions": [
       "storage",
       "activeTab",
-      "tabs",
-      "background"
+      "tabs"
     ],
     "action": {
       "default_popup": "index.html",

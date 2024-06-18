@@ -105,6 +105,13 @@
   onMount(() => {
     loadState();
   });
+
+  function formatStrainName(strain_name) {
+    return strain_name
+      .replace(/\s+/g, '-') // Replace whitespace with dash
+      .replace(/[^\w-]+/g, '') // Remove all other special characters
+      .toLowerCase();
+  }
 </script>
 
 <main>
@@ -167,7 +174,14 @@
     <tbody>
       {#each filteredStrains as strain}
         <tr>
-          <td class="clickable" on:click={() => openInCurrentTab(`https://flowzz.com/product/${strain.url}`)}>{strain.name}</td>
+          <td>
+            <a class="clickable" href={"https://flowzz.com/product/" + strain.url} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://flowzz.com/product/" + strain.url); }}>
+              {strain.name}
+            </a>
+            <a class="clickable" href={"https://flowzz.com/strain/" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://flowzz.com/strain/" + formatStrainName(strain.strain_name)); }}>
+              ({formatStrainName(strain.strain_name)})
+            </a>
+          </td>
           <td>{strain.thc}%</td>
           <td>{(strain.ratings_score ?? 0)} ({(strain.ratings_count ?? 0)} reviews)</td>
           <td>{strain.min_price} - {strain.max_price}</td>
