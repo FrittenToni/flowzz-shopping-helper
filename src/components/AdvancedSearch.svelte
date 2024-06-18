@@ -110,6 +110,43 @@
       .replace(/[^\w-]+/g, '') // Remove all other special characters
       .toLowerCase();
   }
+
+  async function fetchRatings(strainId) {
+    let ratings = [];
+    let start = 0;
+    let hasMore = true;
+
+    while (hasMore) {
+      const response = await fetch(`https://flowzz.com/api/raitings/${strainId}?t=1&id=${strainId}&start=${start}`);
+      const data = await response.json();
+
+      if (data.error || data.message.data.ratings.length === 0) {
+        hasMore = false;
+      } else {
+        ratings = [...ratings, ...data.message.data.ratings];
+        start += 10;
+      }
+    }
+
+    return ratings;
+  }
+
+  let activeRatings = {};
+
+  async function handleShowRatings(strainId) {
+    if (activeRatings[strainId] && activeRatings[strainId] !== "No ratings found") {
+      delete activeRatings[strainId];
+      activeRatings = { ...activeRatings };
+    } else {
+      const ratings = await fetchRatings(strainId);
+      activeRatings = { ...activeRatings, [strainId]: ratings.length > 0 ? ratings : "No ratings found" };
+    }
+  }
+
+  function handleCloseRatings(strainId) {
+    delete activeRatings[strainId];
+    activeRatings = { ...activeRatings };
+  }
 </script>
 
 <main>
@@ -200,9 +237,35 @@
             <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name); }}>Cannaconnection</a>
           </td>
           <td>{strain.thc}%</td>
-          <td>{(strain.ratings_score ?? 0)} ({(strain.ratings_count ?? 0)} reviews)</td>
+          <td>
+            {strain.ratings_score ?? 0} 
+            <a class="clickable" on:click={(e) => { e.preventDefault(); handleShowRatings(strain.id); }}>
+              ({strain.ratings_count ?? 0} reviews)
+            </a>
+          </td>
           <td>{strain.min_price} - {strain.max_price}</td>
         </tr>
+        {#if activeRatings[strain.id]}
+          <tr>
+            <td colspan="5">
+              <div class="ratings">
+                <h4>
+                  <a class="clickable" on:click={(e) => { e.preventDefault(); handleCloseRatings(strain.id); }}>Close</a>
+                </h4>
+                {#if typeof activeRatings[strain.id] === 'string'}
+                  <p>{activeRatings[strain.id]}</p>
+                {:else}
+                  {#each activeRatings[strain.id] as rating}
+                    <div class="rating">
+                      <p><strong>{rating.author.username}</strong> ({new Date(rating.createdAt).toLocaleDateString()}): {rating.score} stars</p>
+                      <p>{rating.comment.content}</p>
+                    </div>
+                  {/each}
+                {/if}
+              </div>
+            </td>
+          </tr>
+        {/if}
       {/each}
     </tbody>
   </table>
@@ -272,5 +335,14 @@
     cursor: pointer;
     color: blue;
     text-decoration: underline;
+  }
+  .ratings {
+    text-align: left;
+    margin-top: 1rem;
+  }
+  .rating {
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-bottom: 1rem;
   }
 </style>
