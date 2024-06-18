@@ -13,22 +13,17 @@
   let sortOption = '';
   let sortOrder = 'asc';
   let showAvailableOnly = false;
+  let searchStrain = '';
 
   // Reactive computed property for filtered strains
   $: filteredStrains = cannabisStrains.filter(strain => {
-    // Apply price filter
     const isPriceInRange = priceMax === '' ? strain.min_price >= priceMin : (strain.min_price >= priceMin && strain.min_price <= priceMax);
-
-    // Apply THC filter
     const isThcInRange = strain.thc >= thcMin && strain.thc <= thcMax;
-
-    // Apply rating filter
     const isRatingInRange = (strain.ratings_score ?? 0) >= ratingMin && (strain.ratings_count ?? 0) >= scoreCountMin;
-
-    // Apply availability filter
     const isAvailable = showAvailableOnly ? strain.availibility === 1 : true;
+    const isStrainMatch = searchStrain === '' ? true : strain.name.toLowerCase().includes(searchStrain.toLowerCase());
 
-    return isPriceInRange && isThcInRange && isRatingInRange && isAvailable;
+    return isPriceInRange && isThcInRange && isRatingInRange && isAvailable && isStrainMatch;
   }).sort((a, b) => {
     let comparison = 0;
     switch (sortOption) {
@@ -69,7 +64,8 @@
       scoreCountMin,
       sortOption,
       sortOrder,
-      showAvailableOnly
+      showAvailableOnly,
+      searchStrain
     };
     localStorage.setItem('advancedSearchState', JSON.stringify(state));
   }
@@ -86,6 +82,7 @@
       sortOption = state.sortOption;
       sortOrder = state.sortOrder;
       showAvailableOnly = state.showAvailableOnly;
+      searchStrain = state.searchStrain;
     }
   }
 
@@ -99,6 +96,7 @@
     sortOption = '';
     sortOrder = 'asc';
     showAvailableOnly = false;
+    searchStrain = '';
     saveState();
   }
 
@@ -151,13 +149,27 @@
       </select>
     </div>
     <div class="filter-item">
-      <button class="clear-button" on:click={clearFilters}>Clear</button>
+      <label>Name:</label>
+      <input
+        list="strainNames"
+        bind:value={searchStrain}
+        placeholder="Enter strain name"
+        on:input={saveState}
+      />
+      <datalist id="strainNames">
+        {#each cannabisStrains as strain}
+          <option value={strain.name}>{strain.name}</option>
+        {/each}
+      </datalist>
     </div>
     <div class="filter-item checkbox-item">
       <label class="checkbox-container">
         <input type="checkbox" bind:checked={showAvailableOnly} on:change={saveState}/>
         Show Available Only
       </label>
+    </div>
+    <div class="filter-item">
+      <button class="clear-button" on:click={clearFilters}>Clear</button>
     </div>
   </div>
 
@@ -240,7 +252,7 @@
     cursor: pointer;
   }
   .clear-button {
-    margin-top: 25px;
+    margin-top: 0px;
   }
   table {
     width: 100%;
