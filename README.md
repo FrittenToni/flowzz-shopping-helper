@@ -12,6 +12,7 @@ Features:
   * Get an overview which vendor is selling all selected strains and sort them by price
   * Save, edit and delete presets of strains for quick price comparison
 
+![extension](demo/extension.png)
 ![extension1](demo/extension1.png)
 ![extension2](demo/extension2.png)
 ![extension2](demo/extension3.png)
