@@ -103,7 +103,7 @@ interface VendorApiResponse {
 export async function fetchStrains(updateMessage: (message: string) => void): Promise<void> {
     let allStrains: Product[] = [];
     let page = 1;
-    const pageSize = 12; // The pageSize should match the one used by the API
+    const pageSize = 30; // The pageSize should match the one used by the API
     let hasMore = true;
 
     updateMessage('Syncing Cannabis Strains...');

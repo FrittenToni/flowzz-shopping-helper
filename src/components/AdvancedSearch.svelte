@@ -166,7 +166,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>More Details</th>
+        <th>Details</th>
         <th>THC</th>
         <th>Rating</th>
         <th>Price Range</th>
