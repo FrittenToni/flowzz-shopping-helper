@@ -196,8 +196,8 @@
             </a>
           </td>
           <td>
-            <a class="clickable" href={"https://www.leafly.com/search?q=" + strain.strain_name} target="_blank">Leafly</a> |
-            <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name} target="_blank">Cannaconnection</a>
+            <a class="clickable" href={"https://www.leafly.com/search?q=" + strain.strain_name} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.leafly.com/search?q=" + strain.strain_name); }}>Leafly</a> |
+            <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name); }}>Cannaconnection</a>
           </td>
           <td>{strain.thc}%</td>
           <td>{(strain.ratings_score ?? 0)} ({(strain.ratings_count ?? 0)} reviews)</td>
