@@ -166,6 +166,7 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>More Details</th>
         <th>THC</th>
         <th>Rating</th>
         <th>Price Range</th>
@@ -181,6 +182,10 @@
             <a class="clickable" href={"https://flowzz.com/strain/" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://flowzz.com/strain/" + formatStrainName(strain.strain_name)); }}>
               ({formatStrainName(strain.strain_name)})
             </a>
+          </td>
+          <td>
+            <a class="clickable" href={"https://www.leafly.com/search?q=" + strain.strain_name} target="_blank">Leafly</a> |
+            <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name} target="_blank">Cannaconnection</a>
           </td>
           <td>{strain.thc}%</td>
           <td>{(strain.ratings_score ?? 0)} ({(strain.ratings_count ?? 0)} reviews)</td>
