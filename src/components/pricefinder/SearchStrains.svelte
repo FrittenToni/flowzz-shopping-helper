@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fetchCsrfToken } from '$lib/syncStrains.ts';
-	import SearchStrainField from '$components/SearchStrainField.svelte';
-	import PresetManager from '$components/PresetManager.svelte';
-	import PriceComparison from '$components/PriceComparison.svelte';
+	import SearchStrainField from './SearchStrainField.svelte';
+	import PresetManager from './PresetManager.svelte';
+	import PriceComparison from './PriceComparison.svelte';
 
 	export let cannabisStrains: { id: number; name: string }[] = [];
 	export let strainCount = 0;
