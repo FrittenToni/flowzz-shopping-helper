@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from "svelte";
 	import { fetchStrains } from "$lib/syncStrains.ts";
-	import AdvancedSearch from "$components/AdvancedSearch.svelte";
-	import SearchStrains from "$components/SearchStrains.svelte";
+	import AdvancedSearch from "$components/search/AdvancedSearch.svelte";
+	import SearchStrains from "$components/pricefinder/SearchStrains.svelte";
 
 	let loading = false;
 	let message = "";
