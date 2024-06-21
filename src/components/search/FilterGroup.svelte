@@ -179,8 +179,9 @@
           Show Available Only
       </label>
   </div>
+  <br/>
   <div class="filter-item">
-      <button class="clear-button" on:click={clearFilters}>Clear</button>
+      <button on:click={clearFilters}>Clear</button>
   </div>
 </div>
 
@@ -200,6 +201,7 @@
   .checkbox-item {
       display: flex;
       align-items: center;
+      justify-content: end;
   }
   .checkbox-container {
       display: flex;
@@ -222,8 +224,5 @@
       padding: 0.5rem 1rem;
       font-size: 1rem;
       cursor: pointer;
-  }
-  .clear-button {
-      margin-top: 0px;
   }
 </style>
