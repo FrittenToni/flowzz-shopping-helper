@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Flowzz Shopping Helper",
-    "version": "1337.0",
+    "version": "0.0.5",
     "permissions": [
       "storage",
       "activeTab",
