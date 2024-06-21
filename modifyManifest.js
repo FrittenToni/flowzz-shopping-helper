@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
+import archiver from 'archiver';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,6 +28,28 @@ async function modifyManifest() {
   await fs.writeJson(manifestPath, manifest, { spaces: 2 });
 
   console.log('Firefox build created successfully.');
+
+  // Zip the content of build-firefox
+  const output = fs.createWriteStream(path.join(firefoxDir, 'flowzz-shopping-helper.xpi'));
+  const archive = archiver('zip', {
+    zlib: { level: 9 } // Maximum compression
+  });
+
+  output.on('close', function() {
+    console.log(archive.pointer() + ' total bytes');
+    console.log('flowzz-shopping-helper.xpi has been created successfully.');
+  });
+
+  archive.on('error', function(err) {
+    throw err;
+  });
+
+  archive.pipe(output);
+
+  // Append files from build-firefox
+  archive.directory(firefoxDir, false);
+
+  await archive.finalize();
 }
 
 modifyManifest().catch(err => {
