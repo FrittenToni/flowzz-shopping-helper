@@ -17,6 +17,7 @@
   let showAvailableOnly = false;
   let searchStrain = '';
   let searchCultivar = '';
+  let preciseSearch = false;
 
   function handleFilterChange(event) {
       const {
@@ -30,7 +31,8 @@
           sortOrder,
           showAvailableOnly,
           searchStrain,
-          searchCultivar
+          searchCultivar,
+          preciseSearch
       } = event.detail;
 
       filteredStrains = cannabisStrains.filter(strain => {
@@ -39,7 +41,9 @@
           const isRatingInRange = (strain.ratings_score ?? 0) >= ratingMin && (strain.ratings_count ?? 0) >= scoreCountMin;
           const isAvailable = showAvailableOnly ? strain.availibility === 1 : true;
           const isStrainMatch = searchStrain === '' ? true : strain.name.toLowerCase().includes(searchStrain.toLowerCase());
-          const isCultivarMatch = searchCultivar === '' ? true : formatStrainName(strain.strain_name).includes(searchCultivar.toLowerCase());
+          const isCultivarMatch = searchCultivar === '' ? true : preciseSearch
+              ? formatStrainName(strain.strain_name) === formatStrainName(searchCultivar)
+              : formatStrainName(strain.strain_name).includes(formatStrainName(searchCultivar));
 
           return isPriceInRange && isThcInRange && isRatingInRange && isAvailable && isStrainMatch && isCultivarMatch;
       }).sort((a, b) => {
@@ -76,7 +80,7 @@
   }
 
   onMount(() => {
-      handleFilterChange({ detail: { priceMin, priceMax, thcMin, thcMax, ratingMin, scoreCountMin, sortOption, sortOrder, showAvailableOnly, searchStrain, searchCultivar } });
+      handleFilterChange({ detail: { priceMin, priceMax, thcMin, thcMax, ratingMin, scoreCountMin, sortOption, sortOrder, showAvailableOnly, searchStrain, searchCultivar, preciseSearch } });
   });
 </script>
 

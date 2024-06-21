@@ -14,6 +14,7 @@
   let showAvailableOnly = false;
   let searchStrain = '';
   let searchCultivar = '';
+  let preciseSearch = false;
 
   const dispatch = createEventDispatcher();
 
@@ -29,7 +30,8 @@
           sortOrder,
           showAvailableOnly,
           searchStrain,
-          searchCultivar
+          searchCultivar,
+          preciseSearch
       };
       localStorage.setItem('advancedSearchState', JSON.stringify(state));
   }
@@ -48,6 +50,7 @@
           showAvailableOnly = state.showAvailableOnly;
           searchStrain = state.searchStrain;
           searchCultivar = state.searchCultivar;
+          preciseSearch = state.preciseSearch;
       }
   }
 
@@ -63,6 +66,7 @@
       showAvailableOnly = false;
       searchStrain = '';
       searchCultivar = '';
+      preciseSearch = false;
       saveState();
       handleFilterChange();
   }
@@ -80,7 +84,8 @@
           sortOrder,
           showAvailableOnly,
           searchStrain,
-          searchCultivar
+          searchCultivar,
+          preciseSearch
       });
   }
 
@@ -161,6 +166,12 @@
               <option value={cultivar}>{cultivar}</option>
           {/each}
       </datalist>
+  </div>
+  <div class="filter-item checkbox-item">
+      <label class="checkbox-container">
+          <input type="checkbox" bind:checked={preciseSearch} on:change={handleFilterChange}/>
+          Precise cultivar search
+      </label>
   </div>
   <div class="filter-item checkbox-item">
       <label class="checkbox-container">
