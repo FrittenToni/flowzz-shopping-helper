@@ -53,7 +53,7 @@
   <tr>
     <th>Name</th>
     <th>Details</th>
-    <th>THC</th>
+    <th>Links</th>
     <th>Rating</th>
     <th>Price Range</th>
   </tr>
@@ -70,10 +70,13 @@
         </a>
       </td>
       <td>
-        <a class="clickable" href={"https://www.leafly.com/search?q=" + strain.strain_name} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.leafly.com/search?q=" + strain.strain_name); }}>Leafly</a> |
-        <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + strain.strain_name); }}>Cannaconnection</a>
+        {strain.thc}%C, {strain.genetic}, {strain.producer_name}
       </td>
-      <td>{strain.thc}%</td>
+      <td>
+        <a class="clickable" href={"https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees"} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees"); }}>Reddit</a> |
+        <a class="clickable" href={"https://www.leafly.com/search?q=" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.leafly.com/search?q=" + formatStrainName(strain.strain_name)); }}>Leafly</a> |
+        <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + formatStrainName(strain.strain_name)); }}>Cannaconnection</a>
+      </td>
       <td>
         {strain.ratings_score ?? 0}
         <a class="clickable" on:click={(e) => { e.preventDefault(); handleShowRatings(strain.id); }}>

@@ -87,8 +87,31 @@
 	</select>
 </div>
 <p>
-<button on:click={handleSavePreset}>Save Preset</button>
+<button class="styled-button" on:click={handleSavePreset}>Save Preset</button>
 {#if selectedPreset}
-	<button on:click={handleDeletePreset}>Delete Preset</button>
+	<button class="styled-button" on:click={handleDeletePreset}>Delete Preset</button>
 {/if}
 </p>
+
+<style>
+	#presetSelect {
+		padding: 10px;
+		font-size: 16px;
+		width: 250px;
+	}
+
+	.styled-button {
+		background-color: gray;
+		color: white;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+
+	.styled-button:hover {
+		background-color: black;
+	}
+</style>
