@@ -2,17 +2,16 @@
 
 Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices on flowzz.com.
 
-**Hint:** This extension has been fully generated with the help of ChatGTP.
+**Hint:** This extension has been fully generated with the help of ChatGTP. Please reach out if you can support in bringing these extensions into the respective App stores.
 
-Please reach out if you can support in bringing these extensions into Chrome/Edge/Firefox App store.
-
-Features:
-* Sync strains from flowzz.com into local storage (incl. auto refresh if flowzz strain count differs local strain count)
-* Advanced Search/Filter
+**Features:**
+* Sync strains from flowzz.com into local storage
+* Auto-refresh if flowzz strain count differs local strain count
+* **Advanced Search**
   * Price, THC, Score, Producer, Genetic Filters 
   * Sort by Price, Rating, THC, Name, Published Date
   * Show reviews directly in filter result table
-* Price Finder
+* **Price Finder**
   * Use auto completion to select strains and to see the vendors offering them as well as their prices
   * Get an overview which vendor is selling all selected strains and sort them by price
   * Save, edit and delete presets of strains for quick price comparison
