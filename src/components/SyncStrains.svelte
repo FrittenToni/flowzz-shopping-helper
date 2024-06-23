@@ -92,11 +92,17 @@
   
     function toggleAdvancedSearch() {
       showAdvancedSearch = !showAdvancedSearch;
+      if (showAdvancedSearch) {
+        showPriceFinder = false;
+      }
       saveState();
     }
   
     function togglePriceFinder() {
       showPriceFinder = !showPriceFinder;
+      if (showPriceFinder) {
+        showAdvancedSearch = false;
+      }
       saveState();
     }
   
@@ -132,15 +138,19 @@
         {#if strainCount > 0}
           <br />
           <div>
-            <button class="styled-button" on:click={toggleAdvancedSearch}>
-              {showAdvancedSearch
-                ? "Close Advanced Search"
-                : "Open Advanced Search"}
+            <button
+              class="styled-button"
+              class:active-button={showAdvancedSearch}
+              on:click={toggleAdvancedSearch}
+            >
+              Advanced Search
             </button>
-            <button class="styled-button" on:click={togglePriceFinder}>
-              {showPriceFinder
-                ? "Close Price Finder"
-                : "Open Price Finder"}
+            <button
+              class="styled-button"
+              class:active-button={showPriceFinder}
+              on:click={togglePriceFinder}
+            >
+              Price Finder
             </button>
           </div>
         {/if}
@@ -178,6 +188,10 @@
     }
   
     .styled-button:hover {
+      background-color: black;
+    }
+  
+    .active-button {
       background-color: black;
     }
   
