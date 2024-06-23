@@ -58,40 +58,36 @@
 			presets = presets.filter(p => p.name !== selectedPreset);
 			localStorage.setItem('presets', JSON.stringify(presets));
 			dispatch('presetDeleted');
+			selectedPreset = ''; // Reset the selectedPreset after deletion
 		}
 	}
 
-	function handleSavePreset() {
+	export function handleSavePreset() {
 		const presetName = prompt('Enter preset name:');
 		if (presetName) {
 			savePreset(presetName);
 		}
 	}
 
-	function handleLoadPreset(event) {
-		loadPreset(event.target.value);
-	}
-
-	function handleDeletePreset() {
+	export function handleDeletePreset() {
 		deletePreset();
 		dispatch('presetDeleted');
 	}
 </script>
 
 <div>
-	<select id="presetSelect" bind:value={selectedPreset} on:change={handleLoadPreset}>
-		<option value="">Select a preset</option>
-		{#each presets as preset}
-			<option value={preset.name}>{preset.name}</option>
-		{/each}
-	</select>
+	{#if presets.length > 0}
+		<select id="presetSelect" bind:value={selectedPreset} on:change={e => loadPreset(e.target.value)}>
+			<option value="">Select a preset</option>
+			{#each presets as preset}
+				<option value={preset.name}>{preset.name}</option>
+			{/each}
+		</select>
+		{#if selectedPreset}
+			<button class="styled-button delete-button" on:click={handleDeletePreset}>-</button>
+		{/if}
+	{/if}
 </div>
-<p>
-<button class="styled-button" on:click={handleSavePreset}>Save Preset</button>
-{#if selectedPreset}
-	<button class="styled-button" on:click={handleDeletePreset}>Delete Preset</button>
-{/if}
-</p>
 
 <style>
 	#presetSelect {
@@ -101,7 +97,7 @@
 	}
 
 	.styled-button {
-		background-color: gray;
+		background-color: red;
 		color: white;
 		border: none;
 		padding: 10px 20px;
@@ -109,6 +105,7 @@
 		cursor: pointer;
 		font-size: 16px;
 		margin-bottom: 10px;
+		margin-left: 10px;
 	}
 
 	.styled-button:hover {

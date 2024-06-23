@@ -113,7 +113,6 @@
 </script>
 
 <main>
-  <h2>Advanced Search</h2>
   <FilterGroup 
     {cannabisStrains}
     on:filterChange={handleFilterChange}

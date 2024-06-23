@@ -70,20 +70,24 @@
         </a>
       </td>
       <td>
-        {strain.thc}%C, {strain.genetic}, {strain.producer_name}
+        {strain.thc}%, {strain.genetic}, {strain.producer_name}
       </td>
       <td>
-        <a class="clickable" href={"https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees"} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees"); }}>Reddit</a> |
+        <a class="clickable" href={"https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees+OR+site%3Areddit.com%2Fr%2FDeutschlandCannabis"} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees"); }}>Reddit</a> |
         <a class="clickable" href={"https://www.leafly.com/search?q=" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.leafly.com/search?q=" + formatStrainName(strain.strain_name)); }}>Leafly</a> |
         <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + formatStrainName(strain.strain_name)); }}>Cannaconnection</a>
       </td>
       <td id="columnRatings">
-        {strain.ratings_score ?? 0}
-        <a class="clickable" on:click={(e) => { e.preventDefault(); handleShowRatings(strain.id); }}>
-          ({strain.ratings_count ?? 0} reviews)
-        </a>
+        {#if strain.ratings_count > 0}
+          {strain.ratings_score ?? 0}
+          <a class="clickable" on:click={(e) => { e.preventDefault(); handleShowRatings(strain.id); }}>
+            ({strain.ratings_count ?? 0} reviews)
+          </a>
+        {:else}
+          -
+        {/if}
       </td>
-      <td id="columnPriceRange" class:highlight-red={strain.availibility == null || strain.availibility === 4}>
+      <td id="columnPriceRange">
         {strain.min_price != null && strain.max_price != null ? `${strain.min_price} - ${strain.max_price}` : "-"}
       </td>
     </tr>
@@ -123,8 +127,5 @@ th {
   cursor: pointer;
   color: blue;
   text-decoration: underline;
-}
-.highlight-red {
-  color: red;
 }
 </style>
