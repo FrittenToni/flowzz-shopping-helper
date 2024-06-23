@@ -281,7 +281,7 @@
     </label>
   </div>
   <div class="filter-item">
-    <button class="clear-button" on:click={clearFilters}>Clear</button>
+    <button class="reset-button" on:click={clearFilters}>Reset</button>
   </div>
 </div>
 
@@ -301,7 +301,7 @@
   .checkbox-item {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
   }
   .checkbox-container {
     display: flex;
@@ -326,7 +326,18 @@
     font-size: 1rem;
     cursor: pointer;
   }
-  .clear-button {
-    margin-top: 0px;
+  .reset-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .reset-button:hover {
+    background-color: darkgreen;
   }
 </style>
