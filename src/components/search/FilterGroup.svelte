@@ -327,7 +327,7 @@
     cursor: pointer;
   }
   .reset-button {
-    background-color: green;
+    background-color: red;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -338,6 +338,6 @@
   }
 
   .reset-button:hover {
-    background-color: darkgreen;
+    background-color: black;
   }
 </style>

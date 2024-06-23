@@ -176,6 +176,7 @@
 
 <main>
 	<h2>Price Finder</h2>
+
 	<PresetManager
 		{presets}
 		{selectedPreset}
@@ -206,9 +207,9 @@
 		/>
 	{/each}
 
-	<div>
-		<button on:click={addSearchField}>+</button>
-		<button on:click={clearSearchFields}>Reset</button>
+	<div id="buttonContainer">
+		<button class="styled-button" on:click={addSearchField}>+</button>
+		<button class="styled-button resetButton" on:click={clearSearchFields}>Reset</button>
 	</div>
 
 	{#if selectedStrains.length > 1}
@@ -226,10 +227,27 @@
 		width: 600px;
 		color: black;
 	}
-	button {
-		margin-top: 1rem;
-		padding: 0.5rem 1.25rem;
-		font-size: 1.25rem;
+	
+	#buttonContainer {
+		padding: 10px
+	}
+
+	.styled-button {
+		background-color: gray;
+		color: white;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 5px;
 		cursor: pointer;
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+
+	.resetButton {
+		background-color: red;
+	}
+
+	.styled-button:hover {
+		background-color: black;
 	}
 </style>

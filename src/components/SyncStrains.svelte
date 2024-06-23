@@ -167,7 +167,7 @@
     }
   
     .styled-button {
-      background-color: green;
+      background-color: gray;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -178,7 +178,7 @@
     }
   
     .styled-button:hover {
-      background-color: darkgreen;
+      background-color: black;
     }
   
     .message-text {
