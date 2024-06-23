@@ -32,7 +32,7 @@
 
       if (data.message.data.ratings.length > 0) {
         ratings = [...ratings, ...data.message.data.ratings];
-        start += 20;
+        start += 10;
       } else {
         hasMore = false;
       }
