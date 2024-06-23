@@ -58,6 +58,7 @@
 			presets = presets.filter(p => p.name !== selectedPreset);
 			localStorage.setItem('presets', JSON.stringify(presets));
 			dispatch('presetDeleted');
+			selectedPreset = ''; // Clear the selected preset after deletion
 		}
 	}
 
@@ -76,19 +77,25 @@
 		deletePreset();
 		dispatch('presetDeleted');
 	}
+
+	$: isStrainChosen = searchFields.some(field => field.selectedStrain);
 </script>
 
 <div>
-	<select id="presetSelect" bind:value={selectedPreset} on:change={handleLoadPreset}>
-		<option value="">Select a preset</option>
-		{#each presets as preset}
-			<option value={preset.name}>{preset.name}</option>
-		{/each}
-	</select>
+	{#if presets.length > 0}
+		<select id="presetSelect" bind:value={selectedPreset} on:change={handleLoadPreset}>
+			<option value="">Select a preset</option>
+			{#each presets as preset}
+				<option value={preset.name}>{preset.name}</option>
+			{/each}
+		</select>
+	{/if}
 </div>
 <p>
-<button class="styled-button" on:click={handleSavePreset}>Save Preset</button>
-{#if selectedPreset}
+{#if isStrainChosen}
+	<button class="styled-button" on:click={handleSavePreset}>Save Preset</button>
+{/if}
+{#if selectedPreset && presets.length > 0}
 	<button class="styled-button" on:click={handleDeletePreset}>Delete Preset</button>
 {/if}
 </p>
