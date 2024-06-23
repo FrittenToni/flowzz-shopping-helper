@@ -77,13 +77,13 @@
         <a class="clickable" href={"https://www.leafly.com/search?q=" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.leafly.com/search?q=" + formatStrainName(strain.strain_name)); }}>Leafly</a> |
         <a class="clickable" href={"https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + formatStrainName(strain.strain_name)} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.cannaconnection.com/search?controller=search&orderby=position&orderway=desc&search_query=" + formatStrainName(strain.strain_name)); }}>Cannaconnection</a>
       </td>
-      <td>
+      <td id="columnRatings">
         {strain.ratings_score ?? 0}
         <a class="clickable" on:click={(e) => { e.preventDefault(); handleShowRatings(strain.id); }}>
           ({strain.ratings_count ?? 0} reviews)
         </a>
       </td>
-      <td class:highlight-red={strain.availibility == null || strain.availibility === 4}>
+      <td id="columnPriceRange" class:highlight-red={strain.availibility == null || strain.availibility === 4}>
         {strain.min_price != null && strain.max_price != null ? `${strain.min_price} - ${strain.max_price}` : "-"}
       </td>
     </tr>
@@ -112,6 +112,12 @@ th, td {
 }
 th {
   background-color: #f2f2f2;
+}
+#columnRatings {
+  width: 90px;
+}
+#columnPriceRange {
+  width: 70px;
 }
 .clickable {
   cursor: pointer;
