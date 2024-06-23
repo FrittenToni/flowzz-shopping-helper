@@ -2,7 +2,7 @@
 
 Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices on flowzz.com.
 
-**Hint:** This extension has been fully generated with the help of ChatGTP. Please reach out if you can support in bringing these extensions into Chrome/Edge/Firefox App store.
+**Hint:** This extension has been fully generated with the help of ChatGTP. Please reach out if you can support in bringing these extensions into the respective App stores.
 
 **Features:**
 * Sync strains from flowzz.com into local storage
