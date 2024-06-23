@@ -201,6 +201,7 @@
 			{field}
 			{index}
 			{cannabisStrains}
+			{searchFields}
 			on:inputChange={handleInputChange}
 			on:amountChange={handleAmountChange}
 			on:removeField={removeSearchField}
@@ -209,7 +210,9 @@
 
 	<div id="buttonContainer">
 		<button class="styled-button" on:click={addSearchField}>+</button>
-		<button class="styled-button resetButton" on:click={clearSearchFields}>Reset</button>
+		{#if searchFields.length > 1}
+			<button class="styled-button resetButton" on:click={clearSearchFields}>Reset</button>
+		{/if}
 	</div>
 
 	{#if selectedStrains.length > 1}

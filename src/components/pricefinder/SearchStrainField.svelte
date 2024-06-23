@@ -5,6 +5,7 @@
   export let field;
   export let index;
   export let cannabisStrains;
+  export let searchFields; // Add this export to access the length of searchFields array
 
   const dispatch = createEventDispatcher();
 
@@ -64,7 +65,9 @@
     class="amount-input"
   />
 
-  <button class="remove-button" on:click={handleRemoveField}>-</button>
+  {#if searchFields.length > 1}
+    <button class="remove-button" on:click={handleRemoveField}>-</button>
+  {/if}
 </div>
 
 {#if selectedStrainDetails}
@@ -73,7 +76,7 @@
       {selectedStrainDetails.url}
     </a>
     <a href={"https://flowzz.com/strain/" + formattedStrainName} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/strain/" + formattedStrainName); }}>
-      ({selectedStrainDetails.strain_name})
+      ({formattedStrainName})
     </a>
     {selectedStrainDetails.genetic} ({selectedStrainDetails.thc}%/{selectedStrainDetails.cbd}%),
     Rating: {selectedStrainDetails.ratings_score ?? 0} ({selectedStrainDetails.ratings_count ?? 0} reviews)

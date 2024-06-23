@@ -94,6 +94,12 @@
 </p>
 
 <style>
+	#presetSelect {
+		padding: 10px;
+		font-size: 16px;
+		width: 250px;
+	}
+
 	.styled-button {
 		background-color: gray;
 		color: white;
