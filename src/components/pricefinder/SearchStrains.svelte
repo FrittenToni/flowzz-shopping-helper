@@ -175,8 +175,6 @@
 </script>
 
 <main>
-	<h2>Price Finder</h2>
-
 	<PresetManager
 		{presets}
 		{selectedPreset}
