@@ -5,7 +5,7 @@
   export let field;
   export let index;
   export let cannabisStrains;
-  export let searchFields; // Add this export to access the length of searchFields array
+  export let searchFields;
 
   const dispatch = createEventDispatcher();
 
@@ -71,16 +71,19 @@
 </div>
 
 {#if selectedStrainDetails}
-  <p>
-    <a href={"https://flowzz.com/product/" + selectedStrainDetails.url} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/product/" + selectedStrainDetails.url); }}>
-      {selectedStrainDetails.url}
-    </a>
-    <a href={"https://flowzz.com/strain/" + formattedStrainName} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/strain/" + formattedStrainName); }}>
-      ({formattedStrainName})
-    </a>
-    {selectedStrainDetails.genetic} ({selectedStrainDetails.thc}%/{selectedStrainDetails.cbd}%),
-    Rating: {selectedStrainDetails.ratings_score ?? 0} ({selectedStrainDetails.ratings_count ?? 0} reviews)
-  </p>
+  <div class="strain-details">
+    <div class="strain-links">
+      <a href={"https://flowzz.com/product/" + selectedStrainDetails.url} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/product/" + selectedStrainDetails.url); }}>
+        {selectedStrainDetails.url}
+      </a>
+      <a href={"https://flowzz.com/strain/" + formattedStrainName} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/strain/" + formattedStrainName); }}>
+        ({formattedStrainName})
+      </a>
+    </div>
+    <div class="strain-info">
+      <p>Genetic: {selectedStrainDetails.genetic} THC: {selectedStrainDetails.thc}% CBD: {selectedStrainDetails.cbd}% Rating: {selectedStrainDetails.ratings_score ?? 0} ({selectedStrainDetails.ratings_count ?? 0} reviews)</p>
+    </div>
+  </div>
 {/if}
 
 {#if field.loadingVendors}
@@ -133,6 +136,21 @@
     width: 50px; /* Fixed width to fit up to 3 digits */
     margin-left: 10px;
   }
+  .strain-details {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  .strain-links a {
+    display: inline-block;
+    color: blue;
+    text-decoration: underline;
+  }
+  .strain-info p {
+    margin: 5px 0;
+  }
   table {
     margin-top: 1rem;
     width: 100%;
@@ -163,7 +181,7 @@
     background-color: red;
     color: white;
     border: none;
-    padding: 14px 20px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
