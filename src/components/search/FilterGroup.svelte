@@ -314,11 +314,15 @@
   label {
     margin-bottom: 0.5rem;
   }
-  input,
-  select {
+  input {
     padding: 0.5rem;
     font-size: 1rem;
     width: 150px;
+  }
+  select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 170px;
   }
   button {
     margin-top: 1rem;
