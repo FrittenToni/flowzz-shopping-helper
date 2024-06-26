@@ -10,6 +10,8 @@
   let priceMax = '';
   let thcMin = 0;
   let thcMax = 100;
+  let cbdMin = 0;
+  let cbdMax = 100;
   let ratingMin = 0;
   let scoreCountMin = 0;
   let sortOption = '';
@@ -27,6 +29,8 @@
       priceMax: maxPrice,
       thcMin: minThc,
       thcMax: maxThc,
+      cbdMin: minCbd,
+      cbdMax: maxCbd,
       ratingMin: minRating,
       scoreCountMin: minScoreCount,
       sortOption: sortBy,
@@ -43,6 +47,8 @@
     priceMax = maxPrice;
     thcMin = minThc;
     thcMax = maxThc;
+    cbdMin = minCbd;
+    cbdMax = maxCbd;
     ratingMin = minRating;
     scoreCountMin = minScoreCount;
     sortOption = sortBy;
@@ -61,6 +67,7 @@
     filteredStrains = cannabisStrains.filter(strain => {
       const isPriceInRange = priceMax === '' ? strain.min_price >= priceMin : (strain.min_price >= priceMin && strain.min_price <= priceMax);
       const isThcInRange = strain.thc >= thcMin && strain.thc <= thcMax;
+      const isCbdInRange = strain.cbd >= cbdMin && strain.cbd <= cbdMax;
       const isRatingInRange = (strain.ratings_score ?? 0) >= ratingMin && (strain.ratings_count ?? 0) >= scoreCountMin;
       const isAvailable = showAvailableOnly ? strain.availibility === 1 : true;
       const isStrainMatch = searchStrain === '' ? true : strain.name.toLowerCase().includes(searchStrain.toLowerCase());
@@ -70,7 +77,7 @@
       const isProducerMatch = searchProducer === '' ? true : (strain.producer_name ?? '').toLowerCase().includes(searchProducer.toLowerCase());
       const isGeneticMatch = selectedGenetic === '' ? true : (strain.genetic ?? '').toLowerCase() === selectedGenetic.toLowerCase();
 
-      return isPriceInRange && isThcInRange && isRatingInRange && isAvailable && isStrainMatch && isCultivarMatch && isProducerMatch && isGeneticMatch;
+      return isPriceInRange && isThcInRange && isCbdInRange && isRatingInRange && isAvailable && isStrainMatch && isCultivarMatch && isProducerMatch && isGeneticMatch;
     }).sort((a, b) => {
       let comparison = 0;
       switch (sortOption) {
@@ -85,6 +92,9 @@
           break;
         case 'thc':
           comparison = b.thc - a.thc;
+          break;
+        case 'cbd':
+          comparison = b.cbd - a.cbd;
           break;
         case 'reviewCount':
           comparison = b.ratings_count - a.ratings_count;
