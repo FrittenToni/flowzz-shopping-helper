@@ -7,6 +7,8 @@
   let priceMax = "";
   let thcMin = 0;
   let thcMax = 100;
+  let cbdMin = 0;
+  let cbdMax = 100;
   let ratingMin = 0;
   let scoreCountMin = 0;
   let sortOption = "";
@@ -26,6 +28,8 @@
       priceMax,
       thcMin,
       thcMax,
+      cbdMin,
+      cbdMax,
       ratingMin,
       scoreCountMin,
       sortOption,
@@ -47,6 +51,8 @@
       priceMax = state.priceMax;
       thcMin = state.thcMin;
       thcMax = state.thcMax;
+      cbdMin = state.cbdMin;
+      cbdMax = state.cbdMax;
       ratingMin = state.ratingMin;
       scoreCountMin = state.scoreCountMin;
       sortOption = state.sortOption;
@@ -65,7 +71,8 @@
     priceMax = "";
     thcMin = 0;
     thcMax = 100;
-    ratingMin = 0;
+    cbdMin = 0;
+    cbdMax = 100;
     ratingMin = 0;
     scoreCountMin = 0;
     sortOption = "";
@@ -87,6 +94,8 @@
       priceMax,
       thcMin,
       thcMax,
+      cbdMin,
+      cbdMax,
       ratingMin,
       scoreCountMin,
       sortOption,
@@ -161,6 +170,7 @@
       max="100"
       placeholder="Min THC"
       on:input={handleFilterChange}
+      class="thcCbdRangeFilter"
     />
     <input
       type="number"
@@ -169,6 +179,28 @@
       max="100"
       placeholder="Max THC"
       on:input={handleFilterChange}
+      class="thcCbdRangeFilter"
+    />
+  </div>
+  <div class="filter-item">
+    <label>CBD Range:</label>
+    <input
+      type="number"
+      bind:value={cbdMin}
+      min="0"
+      max="100"
+      placeholder="Min CBD"
+      on:input={handleFilterChange}
+      class="thcCbdRangeFilter"
+    />
+    <input
+      type="number"
+      bind:value={cbdMax}
+      min="0"
+      max="100"
+      placeholder="Max CBD"
+      on:input={handleFilterChange}
+      class="thcCbdRangeFilter"
     />
   </div>
   <div class="filter-item">
@@ -179,6 +211,7 @@
       <option value="price">Price</option>
       <option value="rating">Rating</option>
       <option value="thc">THC</option>
+      <option value="cbd">CBD</option>
       <option value="reviewCount">Review Count</option>
       <option value="published_at">Published Date</option>
     </select>
@@ -329,6 +362,9 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
+  }
+  .thcCbdRangeFilter {
+    width: 56px;
   }
   .reset-button {
     background-color: red;

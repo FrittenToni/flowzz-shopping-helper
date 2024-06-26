@@ -69,8 +69,15 @@
           ({formatStrainName(strain.strain_name)})
         </a>
       </td>
-      <td>
-        {strain.thc}%, {strain.genetic}, {strain.producer_name}
+      <td id="columnDetails">
+        {strain.genetic}
+        <div>
+          THC: {strain.thc}%
+        </div>
+        <div>
+          CBD: {strain.cbd}%
+        </div>
+        {strain.producer_name}
       </td>
       <td>
         <a class="clickable" href={"https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees+OR+site%3Areddit.com%2Fr%2FDeutschlandCannabis"} on:click={(e) => { e.preventDefault(); openInCurrentTab("https://www.google.de/search?q=" + formatStrainName(strain.strain_name) + "+site%3Areddit.com%2Fr%2FCannabis_Apotheken+OR+site%3Areddit.com%2Fr%2Fgermantrees"); }}>Reddit</a> |
@@ -123,6 +130,10 @@ th {
 #columnPriceRange {
   width: 70px;
 }
+#columnDetails {
+  width: 100px;
+}
+
 .clickable {
   cursor: pointer;
   color: blue;
