@@ -252,6 +252,7 @@
 		/>
 	{/each}
 
+	<br/>
 	<div id="buttonContainer">
 		{#if searchFields.some((field) => field.selectedStrain)}
 			<button class="styled-button" on:click={addSearchField}>+</button>
@@ -290,9 +291,9 @@
 	}
 
 	.styled-button {
-		background-color: gray;
+		background-color: var(--button-inactive-color);
+		border: var(--button-border);
 		color: white;
-		border: none;
 		padding: 10px 20px;
 		border-radius: 5px;
 		cursor: pointer;
@@ -300,11 +301,13 @@
 		margin-bottom: 10px;
 	}
 
+	.styled-button:hover {
+		background-color: var(--button-active-color);
+	}
+	
 	.resetButton {
 		background-color: red;
 	}
 
-	.styled-button:hover {
-		background-color: black;
-	}
+
 </style>

@@ -119,10 +119,12 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-  color: black;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 th {
-  background-color: #f2f2f2;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 #columnRatings {
   width: 90px;
@@ -133,10 +135,10 @@ th {
 #columnDetails {
   width: 100px;
 }
-
 .clickable {
   cursor: pointer;
-  color: blue;
+  color: var(--link-color);
   text-decoration: underline;
 }
+
 </style>

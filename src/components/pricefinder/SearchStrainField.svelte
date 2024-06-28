@@ -141,11 +141,13 @@
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
+    background-color: var(--background-color);
+    color: var(--text-color);
   }
   .strain-links a {
     display: inline-block;
-    color: blue;
+    color: var(--link-color);
     text-decoration: underline;
   }
   .strain-info p {
@@ -155,32 +157,20 @@
     margin-top: 1rem;
     width: 100%;
     border-collapse: collapse;
+    background-color: var(--background-color);
+	  color: var(--text-color);
   }
   th, td {
     border: 1px solid #ddd;
     padding: 8px;
   }
   th {
-    background-color: #f2f2f2;
     text-align: left;
-  }
-  .styled-button {
-    background-color: gray;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  .styled-button:hover {
-    background-color: black;
   }
   .remove-button {
     background-color: red;
+    border: var(--button-border);
     color: white;
-    border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -188,6 +178,6 @@
     margin: 26px 10px 10px 10px;
   }
   .remove-button:hover {
-    background-color: black;
+    background-color: var(--button-active-color);
   }
 </style>

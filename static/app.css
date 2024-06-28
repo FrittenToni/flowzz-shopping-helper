@@ -1,0 +1,22 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --link-color: blue;
+    --button-inactive-color: gray;
+    --button-active-color: black;
+    --button-border: none;
+  }
+  
+  [data-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --link-color: orange;
+    --button-inactive-color: black;
+    --button-active-color: gray;
+    --button-border: outset;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }

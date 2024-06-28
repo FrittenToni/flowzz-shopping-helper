@@ -30,7 +30,7 @@
   <style>
     .clickable {
       cursor: pointer;
-      color: blue;
+      color: var(--link-color);
       text-decoration: underline;
     }
     .rating {

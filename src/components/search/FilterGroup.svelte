@@ -368,8 +368,8 @@
   }
   .reset-button {
     background-color: red;
+    border: var(--button-border);
     color: white;
-    border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -378,6 +378,6 @@
   }
 
   .reset-button:hover {
-    background-color: black;
+    background-color: var(--button-active-color);
   }
 </style>
