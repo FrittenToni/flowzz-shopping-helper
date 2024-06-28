@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="demo/flowzz-shopping-helper.png" alt="drawing" width="300"/>
-</p>
+<div align="center">
+  <img src="demo/flowzz-shopping-helper.png" height="500px"/>
+</div>
 
 Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices on flowzz.com.
 
