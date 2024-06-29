@@ -100,13 +100,14 @@
 	  margin-top: 1rem;
 	  width: 100%;
 	  border-collapse: collapse;
+	  background-color: var(--background-color);
+	  color: var(--text-color);
 	}
 	th, td {
 	  border: 1px solid #ddd;
 	  padding: 8px;
 	}
 	th {
-	  background-color: #f2f2f2;
 	  text-align: left;
 	}
 	.no-vendors {

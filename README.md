@@ -9,24 +9,34 @@ Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices o
 **Features:**
 * Sync strains from flowzz.com into local storage
 * Auto-refresh if flowzz strain count differs local strain count
-
-![extension](demo/extension.png)
+    <p> 
+      <img src="demo/extension.png" width="600" />
+    </p>
+* Dark Mode
+   <p>
+     <img src="demo/extension-dark.png" width="600" /> 
+   </p>
 * **Advanced Search**
-  * Price, THC, Score, Producer, Genetic Filters 
+  * Price, THC, CBD, Review Score + Count, Producer, Genetic Filters 
   * Sort by Price, Rating, THC, Name, Published Date
   * Show reviews directly in filter result table
+  <p>
+    <img src="demo/extension1.png" width="600" />
+  </p>
 
-![extension1](demo/extension1.png)
 * **Price Finder**
   * Use auto completion to select strains and to see the vendors offering them as well as their prices
   * Get an overview which vendor is selling all selected strains and sort them by price
   * Save, edit and delete presets of strains for quick price comparison
   * Hint: Vendors with price tags for certain products but not being able to ship will be filtered out.
 
-
-
-![extension2](demo/extension2.png)
-![extension2](demo/extension3.png)
+  <p>  
+    <img src="demo/extension2.png" width="600" />
+  </p>  
+  <p>  
+    <img src="demo/extension3.png" width="600" />
+  </p>
+  
 
 ## Chrome/Edge Installation:
 1. Download latest zip file from [Releases](https://github.com/FrittenToni/flowzz-shopping-helper/releases).

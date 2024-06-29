@@ -177,9 +177,9 @@
     }
   
     .styled-button {
-      background-color: gray;
+      background-color: var(--button-inactive-color);
+      border: var(--button-border);
       color: white;
-      border: none;
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
@@ -188,11 +188,11 @@
     }
   
     .styled-button:hover {
-      background-color: black;
+      background-color: var(--button-active-color);
     }
   
     .active-button {
-      background-color: black;
+      background-color: var(--button-active-color);
     }
   
     .message-text {
