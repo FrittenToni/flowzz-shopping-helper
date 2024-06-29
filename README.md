@@ -32,8 +32,11 @@ Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices o
 
   <p>  
     <img src="demo/extension2.png" width="600" />
+  </p>  
+  <p>  
     <img src="demo/extension3.png" width="600" />
   </p>
+  
 
 ## Chrome/Edge Installation:
 1. Download latest zip file from [Releases](https://github.com/FrittenToni/flowzz-shopping-helper/releases).
