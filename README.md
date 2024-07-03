@@ -18,7 +18,7 @@ Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices o
    </p>
 * **Advanced Search**
   * Price, THC, CBD, Review Score + Count, Producer, Genetic Filters 
-  * Sort by Price, Rating, THC, Name, Published Date
+  * Sort by Price, Rating, THC, CBD, Name, Published Date
   * Show reviews directly in filter result table
   <p>
     <img src="demo/extension1.png" width="600" />
