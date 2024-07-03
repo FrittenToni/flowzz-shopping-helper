@@ -4,7 +4,7 @@
 
 Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices on flowzz.com.
 
-**Hint:** This extension has been fully generated with the help of ChatGTP. Please reach out if you can support in bringing these extensions into the respective App stores.
+**Hint:** This extension has been fully generated with the help of ChatGTP.
 
 **Features:**
 * Sync strains from flowzz.com into local storage
@@ -37,7 +37,6 @@ Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices o
     <img src="demo/extension3.png" width="600" />
   </p>
   
-
 ## Chrome/Edge Installation:
 1. Download latest zip file from [Releases](https://github.com/FrittenToni/flowzz-shopping-helper/releases).
 2. Unzip extension
