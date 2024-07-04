@@ -90,7 +90,9 @@
   <p>Loading...</p>
 {:else if field.selectedStrain}
   {#if field.noVendors}
-    <p>No Vendors found.</p>
+  <div class="no-vendors">
+	  <p>No vendor available providing selected strain.</p>
+	</div>
   {:else if field.vendors.length > 0}
     <table>
       <thead>
@@ -98,7 +100,7 @@
           <th>Vendor</th>
           <th>Price</th>
           {#if field.amount > 1}
-            <th>Total Amount</th>
+            <th>Total</th>
           {/if}
         </tr>
       </thead>
@@ -180,4 +182,13 @@
   .remove-button:hover {
     background-color: var(--button-active-color);
   }
+  .no-vendors {
+	  color: red;
+	  margin-top: 1rem;
+	  padding: 1rem;
+	  border: 1px solid #ddd;
+	  border-radius: 8px;
+    background-color: var(--background-color);
+	  text-align: center;
+	}
 </style>

@@ -70,9 +70,10 @@
 			<td>{vendor.name}</td>
 			{#each selectedStrains as strain}
 			  <td>
+
 				{(vendor.prices[strain.name] * strain.amount).toFixed(2)}
 				{#if strain.amount > 1}
-				  ({vendor.prices[strain.name]})
+				  ({strain.amount} x {vendor.prices[strain.name]})
 				{/if}
 			  </td>
 			{/each}
@@ -116,7 +117,7 @@
 	  padding: 1rem;
 	  border: 1px solid #ddd;
 	  border-radius: 8px;
-	  background-color: #f9f9f9;
+	  background-color: var(--background-color);
 	  text-align: center;
 	}
   </style>
