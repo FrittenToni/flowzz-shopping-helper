@@ -168,7 +168,6 @@
     main {
       text-align: center;
       padding: 1rem;
-      width: 600px;
       color: green;
     }
   

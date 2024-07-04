@@ -195,7 +195,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin: 26px 10px 10px 10px;
+    margin: 26px 0px 10px 10px;
   }
   .remove-button:hover {
     background-color: var(--button-active-color);
