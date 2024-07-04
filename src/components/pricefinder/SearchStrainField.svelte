@@ -82,7 +82,7 @@
           );
         }}
       >
-        {selectedStrainDetails.url}
+        {selectedStrainDetails.name}
       </a>
       <a
         href={"https://flowzz.com/strain/" + formattedStrainName}
@@ -161,7 +161,6 @@
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    /* background-color: #f9f9f9; */
     background-color: var(--background-color);
     color: var(--text-color);
   }
