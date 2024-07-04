@@ -147,7 +147,7 @@
     margin-top: 1rem;
     padding: 0.5rem;
     font-size: 1.25rem;
-    width: 400px;
+    width: 100%;
   }
   .amount-input {
     margin-top: 1rem;
