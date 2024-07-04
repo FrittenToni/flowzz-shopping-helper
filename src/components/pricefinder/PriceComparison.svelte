@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let selectedStrains: { id: number; name: string; vendors: { name: string; price: number }[]; amount: number }[] = [];
-	
+  
 	let priceComparisonData = [];
   
 	$: {
@@ -54,38 +54,41 @@
   
   {#if priceComparisonData.length > 0}
 	<h2>Vendors offering all strains:</h2>
-	<table>
-	  <thead>
-		<tr>
-		  <th>Vendor</th>
-		  {#each selectedStrains as strain}
-			<th>{strain.name}</th>
-		  {/each}
-		  <th>Total</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		{#each priceComparisonData as vendor}
+	<div class="table-container">
+	  <table>
+		<thead>
 		  <tr>
-			<td>{vendor.name}</td>
+			<th>Vendor</th>
 			{#each selectedStrains as strain}
+			  <th>{strain.name}</th>
+			{/each}
+			<th>Total</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  {#each priceComparisonData as vendor}
+			<tr>
+			  <td>{vendor.name}</td>
+			  {#each selectedStrains as strain}
+				<td>
+				  {(vendor.prices[strain.name] * strain.amount).toFixed(2)}
+				  {#if strain.amount > 1}
+				    <br/>
+					({strain.amount} x {vendor.prices[strain.name]})
+				  {/if}
+				</td>
+			  {/each}
 			  <td>
-				{(vendor.prices[strain.name] * strain.amount).toFixed(2)}
-				{#if strain.amount > 1}
-				  ({vendor.prices[strain.name]})
+				{vendor.total.toFixed(2)}
+				{#if selectedStrains.some(strain => strain.amount > 1)}
+				  ({vendor.totalPrice.toFixed(2)})
 				{/if}
 			  </td>
-			{/each}
-			<td>
-			  {vendor.total.toFixed(2)}
-			  {#if selectedStrains.some(strain => strain.amount > 1)}
-				({vendor.totalPrice.toFixed(2)})
-			  {/if}
-			</td>
-		  </tr>
-		{/each}
-	  </tbody>
-	</table>
+			</tr>
+		  {/each}
+		</tbody>
+	  </table>
+	</div>
   {:else}
 	<div class="no-vendors">
 	  <p>No vendor available providing all selected strains.</p>
@@ -96,8 +99,11 @@
 	h2 {
 	  color: green;
 	}
-	table {
+	.table-container {
 	  margin-top: 1rem;
+	  overflow-x: auto;
+	}
+	table {
 	  width: 100%;
 	  border-collapse: collapse;
 	  background-color: var(--background-color);
@@ -109,6 +115,7 @@
 	}
 	th {
 	  text-align: left;
+	  min-width: 60px;
 	}
 	.no-vendors {
 	  color: red;
@@ -116,7 +123,7 @@
 	  padding: 1rem;
 	  border: 1px solid #ddd;
 	  border-radius: 8px;
-	  background-color: #f9f9f9;
+	  background-color: var(--background-color);
 	  text-align: center;
 	}
   </style>

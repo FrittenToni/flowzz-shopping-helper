@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  import { formatStrainName } from '$components/utils'; // Adjust the import path as necessary
+  import { createEventDispatcher } from "svelte";
+  import { formatStrainName } from "$components/utils"; // Adjust the import path as necessary
 
   export let field;
   export let index;
@@ -10,7 +10,7 @@
   const dispatch = createEventDispatcher();
 
   function handleInputChange(event) {
-    dispatch('inputChange', { index, value: event.target.value });
+    dispatch("inputChange", { index, value: event.target.value });
   }
 
   function handleAmountChange(event) {
@@ -18,26 +18,26 @@
     if (isNaN(amount) || amount < 1) {
       amount = 1;
     }
-    dispatch('amountChange', { index, amount });
+    dispatch("amountChange", { index, amount });
   }
 
   function handleRemoveField() {
-    dispatch('removeField', { index });
+    dispatch("removeField", { index });
   }
 
   function navigateToUrl(url: string) {
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.update(tabs[0].id, { url });
     });
   }
 
   $: selectedStrainDetails = cannabisStrains.find(
-    (strain) => strain.name.toLowerCase() === field.inputValue.toLowerCase()
+    (strain) => strain.name.toLowerCase() === field.inputValue.toLowerCase(),
   );
 
   $: formattedStrainName = selectedStrainDetails
     ? formatStrainName(selectedStrainDetails.strain_name)
-    : '';
+    : "";
 </script>
 
 <div class="input-group">
@@ -73,15 +73,33 @@
 {#if selectedStrainDetails}
   <div class="strain-details">
     <div class="strain-links">
-      <a href={"https://flowzz.com/product/" + selectedStrainDetails.url} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/product/" + selectedStrainDetails.url); }}>
-        {selectedStrainDetails.url}
+      <a
+        href={"https://flowzz.com/product/" + selectedStrainDetails.url}
+        on:click={(e) => {
+          e.preventDefault();
+          navigateToUrl(
+            "https://flowzz.com/product/" + selectedStrainDetails.url,
+          );
+        }}
+      >
+        {selectedStrainDetails.name}
       </a>
-      <a href={"https://flowzz.com/strain/" + formattedStrainName} on:click={(e) => { e.preventDefault(); navigateToUrl("https://flowzz.com/strain/" + formattedStrainName); }}>
+      <a
+        href={"https://flowzz.com/strain/" + formattedStrainName}
+        on:click={(e) => {
+          e.preventDefault();
+          navigateToUrl("https://flowzz.com/strain/" + formattedStrainName);
+        }}
+      >
         ({formattedStrainName})
       </a>
     </div>
     <div class="strain-info">
-      <p>Genetic: {selectedStrainDetails.genetic} THC: {selectedStrainDetails.thc}% CBD: {selectedStrainDetails.cbd}% Rating: {selectedStrainDetails.ratings_score ?? 0} ({selectedStrainDetails.ratings_count ?? 0} reviews)</p>
+      <p>
+        Genetic: {selectedStrainDetails.genetic} THC: {selectedStrainDetails.thc}%
+        CBD: {selectedStrainDetails.cbd}% Rating: {selectedStrainDetails.ratings_score ??
+          0} ({selectedStrainDetails.ratings_count ?? 0} reviews)
+      </p>
     </div>
   </div>
 {/if}
@@ -90,7 +108,9 @@
   <p>Loading...</p>
 {:else if field.selectedStrain}
   {#if field.noVendors}
-    <p>No Vendors found.</p>
+    <div class="no-vendors">
+      <p>No vendor available providing selected strain.</p>
+    </div>
   {:else if field.vendors.length > 0}
     <table>
       <thead>
@@ -98,7 +118,7 @@
           <th>Vendor</th>
           <th>Price</th>
           {#if field.amount > 1}
-            <th>Total Amount</th>
+            <th>Total</th>
           {/if}
         </tr>
       </thead>
@@ -127,7 +147,7 @@
     margin-top: 1rem;
     padding: 0.5rem;
     font-size: 1.25rem;
-    width: 400px;
+    width: 100%;
   }
   .amount-input {
     margin-top: 1rem;
@@ -141,7 +161,6 @@
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    /* background-color: #f9f9f9; */
     background-color: var(--background-color);
     color: var(--text-color);
   }
@@ -158,9 +177,10 @@
     width: 100%;
     border-collapse: collapse;
     background-color: var(--background-color);
-	  color: var(--text-color);
+    color: var(--text-color);
   }
-  th, td {
+  th,
+  td {
     border: 1px solid #ddd;
     padding: 8px;
   }
@@ -179,5 +199,14 @@
   }
   .remove-button:hover {
     background-color: var(--button-active-color);
+  }
+  .no-vendors {
+    color: red;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--background-color);
+    text-align: center;
   }
 </style>
