@@ -180,6 +180,7 @@
 						.map((vendor: any) => ({
 							name: vendor.attributes.vendor.data.attributes.name,
 							price: vendor.attributes.price,
+							website: vendor.attributes.vendor.data.attributes.website
 						}))
 						.sort((a, b) => a.price - b.price);
 					field.noVendors = false;
