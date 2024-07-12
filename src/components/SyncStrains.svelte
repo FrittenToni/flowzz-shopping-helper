@@ -169,6 +169,7 @@
       text-align: center;
       padding: 1rem;
       color: green;
+      min-width: 650px;
     }
   
     button {

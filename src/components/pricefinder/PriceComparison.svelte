@@ -51,9 +51,9 @@
 	  }
 	}
   </script>
-  
+  <h2>Vendors offering all strains</h2>
   {#if priceComparisonData.length > 0}
-	<h2>Vendors offering all strains:</h2>
+	
 	<div class="table-container">
 	  <table>
 		<thead>
