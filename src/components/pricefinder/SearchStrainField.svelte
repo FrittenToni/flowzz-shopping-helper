@@ -125,7 +125,13 @@
       <tbody>
         {#each field.vendors as vendor}
           <tr>
-            <td>{vendor.name}</td>
+            <td>
+              {#if vendor.website && (vendor.website.startsWith('http') || vendor.website.startsWith('www.'))}
+                <a href={vendor.website} on:click={(e) => { e.preventDefault(); navigateToUrl(vendor.website); }} class="vendorLink">{vendor.name}</a>
+              {:else}
+                {vendor.name}
+              {/if}
+            </td>
             <td>{vendor.price}</td>
             {#if field.amount > 1}
               <td>{(vendor.price * field.amount).toFixed(2)}</td>
@@ -208,5 +214,8 @@
     border-radius: 8px;
     background-color: var(--background-color);
     text-align: center;
+  }
+  .vendorLink {
+    color: var(--link-color);
   }
 </style>

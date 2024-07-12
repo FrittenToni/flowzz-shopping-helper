@@ -3,6 +3,12 @@
   
 	let priceComparisonData = [];
   
+	function navigateToUrl(url: string) {
+		chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+		chrome.tabs.update(tabs[0].id, { url });
+		});
+	}
+
 	$: {
 	  const vendorPrices = new Map();
   
@@ -13,6 +19,7 @@
 		for (const vendor of selectedStrains[0].vendors) {
 		  vendorPrices.set(vendor.name, {
 			name: vendor.name,
+			website: vendor.website,
 			prices: { [selectedStrains[0].name]: vendor.price },
 			total: vendor.price * selectedStrains[0].amount,
 			totalPrice: vendor.price,
@@ -51,9 +58,9 @@
 	  }
 	}
   </script>
-  
+  <h2>Vendors offering all strains</h2>
   {#if priceComparisonData.length > 0}
-	<h2>Vendors offering all strains:</h2>
+	
 	<div class="table-container">
 	  <table>
 		<thead>
@@ -68,8 +75,14 @@
 		<tbody>
 		  {#each priceComparisonData as vendor}
 			<tr>
-			  <td>{vendor.name}</td>
-			  {#each selectedStrains as strain}
+				<td>
+				{#if vendor.website && (vendor.website.startsWith('http') || vendor.website.startsWith('www.'))}
+                	<a href={vendor.website} on:click={(e) => { e.preventDefault(); navigateToUrl(vendor.website); }} class="vendorLink">{vendor.name}</a>
+              	{:else}
+                	{vendor.name}
+              	{/if}
+				</td>			  
+				{#each selectedStrains as strain}
 				<td>
 				  {(vendor.prices[strain.name] * strain.amount).toFixed(2)}
 				  {#if strain.amount > 1}
@@ -126,5 +139,9 @@
 	  background-color: var(--background-color);
 	  text-align: center;
 	}
+
+	.vendorLink {
+      color: var(--link-color);
+    }
   </style>
   

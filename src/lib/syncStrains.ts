@@ -136,16 +136,9 @@ export async function fetchStrains(updateMessage: (message: string) => void): Pr
     updateMessage(`${allStrains.length} Cannabis Strains available`);
 }
 
-export async function fetchVendorsForStrain(csrfToken: string, strainId: number): Promise<VendorApiResponse | null> {
+export async function fetchVendorsForStrain(strainId: number): Promise<VendorApiResponse | null> {
     try {
-        const response = await fetch('https://flowzz.com/api/vendor', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Xsrf-Token': csrfToken
-            },
-            body: JSON.stringify({ t: 2, id: strainId })
-        });
+        const response = await fetch(`https://flowzz.com/api/vendor?t=2&id=${strainId}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -153,21 +146,6 @@ export async function fetchVendorsForStrain(csrfToken: string, strainId: number)
         return data;
     } catch (error) {
         console.error('Error:', error);
-        return null;
-    }
-}
-
-export async function fetchCsrfToken(strainId: number): Promise<VendorApiResponse | null> {
-    try {
-        const response = await fetch('https://flowzz.com/api/auth/csrf');
-        const data = await response.json();
-        if (data.csrfToken) {
-            return await fetchVendorsForStrain(data.csrfToken, strainId);
-        } else {
-            throw new Error('Failed to fetch CSRF token');
-        }
-    } catch (error) {
-        console.error('Error fetching CSRF token:', error);
         return null;
     }
 }

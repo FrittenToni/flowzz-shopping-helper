@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { fetchCsrfToken } from "$lib/syncStrains.ts";
+	import { fetchVendorsForStrain } from "$lib/syncStrains.ts";
 	import SearchStrainField from "./SearchStrainField.svelte";
 	import PresetManager from "./PresetManager.svelte";
 	import PriceComparison from "./PriceComparison.svelte";
@@ -168,7 +168,7 @@
 	async function fetchVendors(index: number): Promise<void> {
 		const field = { ...searchFields[index] };
 		if (field.selectedStrain) {
-			const data = await fetchCsrfToken(field.selectedStrain.id);
+			const data = await fetchVendorsForStrain(field.selectedStrain.id);
 			if (data && !data.error) {
 				const vendorData = data.message.data.priceFlowers.data.filter(
 					(vendor: any) =>
@@ -180,6 +180,7 @@
 						.map((vendor: any) => ({
 							name: vendor.attributes.vendor.data.attributes.name,
 							price: vendor.attributes.price,
+							website: vendor.attributes.vendor.data.attributes.website
 						}))
 						.sort((a, b) => a.price - b.price);
 					field.noVendors = false;
