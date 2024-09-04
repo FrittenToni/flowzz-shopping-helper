@@ -2,7 +2,7 @@
   <img src="static/flowzz-shopping-helper.png" height="400px"/>
 </div>
 
-Elevate your cannabis shopping experience with the Flowzz Shopping Helper. This powerful browser extension for Chrome,Firefox and Edge seamlessly integrates with flowzz.com, allowing you to effortlessly compare strains and prices across multiple vendors. Whether you're a medical user or a connoisseur, this tool is designed to make your search for the perfect strain quick, easy, and tailored to your needs.
+Elevate your cannabis shopping experience with the Flowzz Shopping Helper. This powerful browser extension for Chrome, Firefox and Edge seamlessly integrates with flowzz.com, allowing you to effortlessly compare strains and prices across multiple vendors. Whether you're a medical user or a connoisseur, this tool is designed to make your search for the perfect strain quick, easy, and tailored to your needs.
 
 **Hint:** This extension has been fully generated with the help of ChatGTP.
 
