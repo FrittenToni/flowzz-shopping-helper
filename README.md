@@ -2,40 +2,40 @@
   <img src="static/flowzz-shopping-helper.png" height="400px"/>
 </div>
 
-Browser Extension for Chrome/Edge/Firefox to easily compare strains and prices on flowzz.com.
+Elevate your cannabis shopping experience with the Flowzz Shopping Helper. This powerful browser extension for Chrome,Firefox and Edge seamlessly integrates with flowzz.com, allowing you to effortlessly compare strains and prices across multiple vendors. Whether you're a medical user or a connoisseur, this tool is designed to make your search for the perfect strain quick, easy, and tailored to your needs.
 
 **Hint:** This extension has been fully generated with the help of ChatGTP.
 
-**Features:**
-* Sync strains from flowzz.com into local storage
-* Auto-refresh if flowzz strain count differs local strain count
+**Key Features::**
+* Automatically sync strains from flowzz.com to your local storage, ensuring your data is always up-to-date.
     <p> 
       <img src="demo/extension.png" width="600" />
     </p>
-* Dark Mode
+* Switch to Dark Mode for a visually comfortable browsing experience, especially during late-night sessions.
    <p>
      <img src="demo/extension-dark.png" width="600" /> 
    </p>
 * **Advanced Search**
-  * Price, THC, CBD, Review Score + Count, Producer, Genetic Filters 
-  * Sort by Price, Rating, THC, CBD, Name, Published Date
-  * Show reviews directly in filter result table
+  * Refine your search with filters for Price, THC, CBD, Review Score + Count, Producer, and Genetics.
+  * Sort your results by Price, Rating, THC, CBD, Name, or Published Date to find exactly what you’re looking for.
+  * View reviews directly within the filter results, making it easier to choose the best option.
   <p>
     <img src="demo/extension1.png" width="600" />
   </p>
 
 * **Price Finder**
-  * Use auto completion to select strains and to see the vendors offering them as well as their prices
-  * Get an overview which vendor is selling all selected strains and sort them by price
-  * Save, edit and delete presets of strains for quick price comparison
-  * Hint: Vendors with price tags for certain products but not being able to ship will be filtered out.
-
+  * Utilize auto-completion to quickly select strains and view vendor prices in real-time.
+  * Easily compare which vendors offer the selected strains and sort them by price for the best deals.
+  * Save, edit, and delete presets of strains to streamline your price comparisons for future use.
+  * Benefit from a smart filtering system that removes vendors unable to ship certain products, ensuring you're only shown viable options.
   <p>  
     <img src="demo/extension2.png" width="600" />
   </p>  
   <p>  
     <img src="demo/extension3.png" width="600" />
   </p>
+
+Make informed decisions with the Flowzz Strain & Price Comparison Extension - your go-to tool for finding the best cannabis strains at the best prices, all in one place.
   
 ## Chrome/Edge Installation:
 1. Download latest zip file from [Releases](https://github.com/FrittenToni/flowzz-shopping-helper/releases).
