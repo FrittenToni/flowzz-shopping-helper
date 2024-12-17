@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import StrainTable from './StrainTable.svelte';
   import FilterGroup from './FilterGroup.svelte';
+  import { formatStrainName } from '$components/utils'; // Adjust the import path as necessary
 
   export let cannabisStrains = [];
 
@@ -107,14 +108,6 @@
       }
       return sortOrder === 'asc' ? comparison : -comparison;
     });
-  }
-
-  function formatStrainName(strain_name) {
-    return strain_name
-      .trim()
-      .replace(/\s+/g, '-') // Replace whitespace with dash
-      .replace(/[^\w-]+/g, '') // Remove all other special characters
-      .toLowerCase();
   }
 
   onMount(() => {
