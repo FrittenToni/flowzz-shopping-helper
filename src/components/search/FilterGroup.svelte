@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher, onMount } from "svelte";
+  import { formatStrainName } from '$components/utils'; // Adjust the import path as necessary
 
   export let cannabisStrains = [];
 
@@ -107,14 +108,6 @@
       selectedGenetic,
       preciseSearch
     });
-  }
-
-  function formatStrainName(strain_name) {
-    return strain_name
-      .trim()
-      .replace(/\s+/g, "-") // Replace whitespace with dash
-      .replace(/[^\w-]+/g, "") // Remove all other special characters
-      .toLowerCase();
   }
 
   const uniqueCultivars = [
