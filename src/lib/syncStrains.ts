@@ -100,53 +100,61 @@ interface VendorApiResponse {
     error: boolean;
 }
 
+async function fetchWithRetries(url, delay, retries = 10, attempt = 1) {
+    await new Promise(resolve => setTimeout(resolve, delay));
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        if (attempt < retries) {
+            const nextDelay = delay * 2; // Exponential backoff
+            console.warn(`Retrying ${url} (attempt ${attempt}) in ${nextDelay}ms due to error: ${error.message}`);
+            return fetchWithRetries(url, nextDelay, retries, attempt + 1);
+        } else {
+            console.error(`Failed to fetch ${url} after ${retries} attempts.`);
+            throw error;
+        }
+    }
+}
+
 export async function fetchStrains(updateMessage: (message: string) => void): Promise<void> {
     let allStrains: Product[] = [];
-    let page = 1;
-    const pageSize = 30; // The pageSize should match the one used by the API
-    let hasMore = true;
+    const page = 1;
+    const pageSize = 30; // Should match the API's page size
 
     updateMessage('Syncing Cannabis Strains...');
 
     try {
         await new Promise(r => setTimeout(r, 2000));
-        // Fetch the first page to get pagination info
-        const initialResponse = await fetch(`https://flowzz.com/api/products?pagination[page]=${page}&pagination[pageSize]=${pageSize}`);
-        const initialData: ApiResponse = await initialResponse.json();
 
-        if (initialData.error) {
-            throw new Error('API error');
-        }
+        // Fetch the first page
+        const initialData: ApiResponse = await fetchWithRetries(
+            `https://flowzz.com/api/products?pagination[page]=${page}&pagination[pageSize]=${pageSize}`, 
+            200
+        );
 
-        // If the initial request is successful, add the strains from the first page
-        if (initialData.message && initialData.message.data && initialData.message.data.length > 0) {
+        if (initialData.error) throw new Error('API error');
+
+        if (initialData.message?.data?.length > 0) {
             allStrains = [...initialData.message.data];
-            const pagination = initialData.message.meta.pagination;
-
-            // Calculate the total number of pages
-            const totalPages = pagination.pageCount;
-
-            // Create an array of promises for the remaining pages
+            const totalPages = initialData.message.meta.pagination.pageCount;
             const fetchPromises = [];
 
+            // Fetch remaining pages with retry and backoff
             for (let i = 2; i <= totalPages; i++) {
-                fetchPromises.push(fetch(`https://flowzz.com/api/products?pagination[page]=${i}&pagination[pageSize]=${pageSize}`).then(res => res.json()));
+                const url = `https://flowzz.com/api/products?pagination[page]=${i}&pagination[pageSize]=${pageSize}`;
+                fetchPromises.push(fetchWithRetries(url, 200)); 
             }
 
-            // Wait for all promises to resolve
             const results = await Promise.all(fetchPromises);
-
-            // Process each result and merge the data
             results.forEach((data: ApiResponse) => {
-                if (data.message && data.message.data && data.message.data.length > 0) {
+                if (data.message?.data?.length > 0) {
                     allStrains = [...allStrains, ...data.message.data];
                 }
             });
-
-            hasMore = false;
-        } else {
-            hasMore = false;
-        }
+        } 
 
         // Save the strains to local storage
         localStorage.setItem('cannabisStrains', JSON.stringify(allStrains));
