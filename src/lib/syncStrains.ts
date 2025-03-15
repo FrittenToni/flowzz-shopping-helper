@@ -60,7 +60,7 @@ interface Pagination {
 }
 
 interface ApiResponse {
-    message: {
+    data: {
         data: Product[];
         meta: {
             pagination: Pagination;
@@ -131,27 +131,27 @@ export async function fetchStrains(updateMessage: (message: string) => void): Pr
 
         // Fetch the first page
         const initialData: ApiResponse = await fetchWithRetries(
-            `https://flowzz.com/api/products?pagination[page]=${page}&pagination[pageSize]=${pageSize}`, 
+            `https://flowzz.com/api/v1/views/flowers?pagination[page]=${page}&pagination[pageSize]=${pageSize}&avail=0`, 
             200
         );
 
         if (initialData.error) throw new Error('API error');
 
-        if (initialData.message?.data?.length > 0) {
-            allStrains = [...initialData.message.data];
-            const totalPages = initialData.message.meta.pagination.pageCount;
+        if (initialData.data?.data?.length > 0) {
+            allStrains = [...initialData.data.data];
+            const totalPages = initialData.data.meta.pagination.pageCount;
             const fetchPromises = [];
 
             // Fetch remaining pages with retry and backoff
             for (let i = 2; i <= totalPages; i++) {
-                const url = `https://flowzz.com/api/products?pagination[page]=${i}&pagination[pageSize]=${pageSize}`;
+                const url = `https://flowzz.com/api/v1/views/flowers?pagination[page]=${i}&pagination[pageSize]=${pageSize}&avail=0`;
                 fetchPromises.push(fetchWithRetries(url, 200)); 
             }
 
             const results = await Promise.all(fetchPromises);
             results.forEach((data: ApiResponse) => {
-                if (data.message?.data?.length > 0) {
-                    allStrains = [...allStrains, ...data.message.data];
+                if (data.data?.data?.length > 0) {
+                    allStrains = [...allStrains, ...data.data.data];
                 }
             });
         } 

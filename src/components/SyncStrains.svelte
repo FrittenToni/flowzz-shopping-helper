@@ -53,9 +53,9 @@
   
     async function fetchTotalProducts() {
       try {
-        const response = await fetch("https://flowzz.com/api/products");
+        const response = await fetch("https://flowzz.com/api/v1/views/flowers?avail=0");
         const data = await response.json();
-        return data.message.meta.pagination.total;
+        return data.data.meta.pagination.total;
       } catch (error) {
         console.error("Failed to fetch total products:", error);
         return null;
